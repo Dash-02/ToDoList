@@ -1,0 +1,11 @@
+D:\JavaScript\For_git_push\lpp\list\todolist\EisenhowerMatrix\EisenhowerMatrix\bin\Debug\EisenhowerMatrix.exe.config
+D:\JavaScript\For_git_push\lpp\list\todolist\EisenhowerMatrix\EisenhowerMatrix\bin\Debug\EisenhowerMatrix.exe
+D:\JavaScript\For_git_push\lpp\list\todolist\EisenhowerMatrix\EisenhowerMatrix\bin\Debug\EisenhowerMatrix.pdb
+D:\JavaScript\For_git_push\lpp\list\todolist\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.csproj.AssemblyReference.cache
+D:\JavaScript\For_git_push\lpp\list\todolist\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.csproj.SuggestedBindingRedirects.cache
+D:\JavaScript\For_git_push\lpp\list\todolist\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.Form1.resources
+D:\JavaScript\For_git_push\lpp\list\todolist\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.Properties.Resources.resources
+D:\JavaScript\For_git_push\lpp\list\todolist\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.csproj.GenerateResource.cache
+D:\JavaScript\For_git_push\lpp\list\todolist\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.csproj.CoreCompileInputs.cache
+D:\JavaScript\For_git_push\lpp\list\todolist\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.exe
+D:\JavaScript\For_git_push\lpp\list\todolist\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.pdb
