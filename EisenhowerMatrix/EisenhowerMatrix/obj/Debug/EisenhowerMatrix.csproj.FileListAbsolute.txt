@@ -9,3 +9,5 @@ D:\JavaScript\For_git_push\lpp\list\todolist\EisenhowerMatrix\EisenhowerMatrix\o
 D:\JavaScript\For_git_push\lpp\list\todolist\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.csproj.CoreCompileInputs.cache
 D:\JavaScript\For_git_push\lpp\list\todolist\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.exe
 D:\JavaScript\For_git_push\lpp\list\todolist\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.pdb
+D:\JavaScript\For_git_push\lpp\list\todolist\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.DoneTasks.resources
+D:\JavaScript\For_git_push\lpp\list\todolist\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\WinFormsApp1.Form1.resources

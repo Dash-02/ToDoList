@@ -46,6 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\Box.cs" />
+    <Compile Include="DoneTasks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoneTasks.Designer.cs">
+      <DependentUpon>DoneTasks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Drawer.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +62,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DoneTasks.resx">
+      <DependentUpon>DoneTasks.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -79,12 +90,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\icons8-главная-50.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\icons8-главная-77.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

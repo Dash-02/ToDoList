@@ -28,7 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.boxImportantNotUg = new System.Windows.Forms.RichTextBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.копироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.вставитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.вырезатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.boxImportantUg = new System.Windows.Forms.RichTextBox();
             this.boxNotImportNotUg = new System.Windows.Forms.RichTextBox();
             this.boxNotImportUg = new System.Windows.Forms.RichTextBox();
@@ -38,29 +43,71 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_done = new System.Windows.Forms.Button();
+            this.btn_add_task = new System.Windows.Forms.Button();
+            this.btn_date = new System.Windows.Forms.Button();
+            this.btn_menu = new System.Windows.Forms.Button();
+            this.btn_home = new System.Windows.Forms.Button();
+            this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // boxImportantNotUg
             // 
+            this.boxImportantNotUg.AcceptsTab = true;
             this.boxImportantNotUg.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.boxImportantNotUg.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.boxImportantNotUg.ContextMenuStrip = this.contextMenuStrip1;
+            this.boxImportantNotUg.EnableAutoDragDrop = true;
             this.boxImportantNotUg.Font = new System.Drawing.Font("Yu Gothic UI", 12F);
             this.boxImportantNotUg.ForeColor = System.Drawing.Color.White;
             this.boxImportantNotUg.Location = new System.Drawing.Point(753, 90);
+            this.boxImportantNotUg.MaxLength = 15000;
             this.boxImportantNotUg.Name = "boxImportantNotUg";
             this.boxImportantNotUg.Size = new System.Drawing.Size(440, 270);
             this.boxImportantNotUg.TabIndex = 0;
             this.boxImportantNotUg.Text = "";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.копироватьToolStripMenuItem,
+            this.вставитьToolStripMenuItem,
+            this.вырезатьToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(163, 76);
+            // 
+            // копироватьToolStripMenuItem
+            // 
+            this.копироватьToolStripMenuItem.Name = "копироватьToolStripMenuItem";
+            this.копироватьToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
+            this.копироватьToolStripMenuItem.Text = "Копировать";
+            // 
+            // вставитьToolStripMenuItem
+            // 
+            this.вставитьToolStripMenuItem.Name = "вставитьToolStripMenuItem";
+            this.вставитьToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
+            this.вставитьToolStripMenuItem.Text = "Вставить";
+            // 
+            // вырезатьToolStripMenuItem
+            // 
+            this.вырезатьToolStripMenuItem.Name = "вырезатьToolStripMenuItem";
+            this.вырезатьToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
+            this.вырезатьToolStripMenuItem.Text = "Вырезать";
+            // 
             // boxImportantUg
             // 
+            this.boxImportantUg.AcceptsTab = true;
             this.boxImportantUg.BackColor = System.Drawing.Color.Tan;
             this.boxImportantUg.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.boxImportantUg.ContextMenuStrip = this.contextMenuStrip1;
+            this.boxImportantUg.EnableAutoDragDrop = true;
             this.boxImportantUg.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.boxImportantUg.ForeColor = System.Drawing.Color.White;
+            this.boxImportantUg.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.boxImportantUg.Location = new System.Drawing.Point(286, 90);
+            this.boxImportantUg.MaxLength = 15000;
             this.boxImportantUg.Name = "boxImportantUg";
             this.boxImportantUg.Size = new System.Drawing.Size(440, 270);
             this.boxImportantUg.TabIndex = 1;
@@ -68,11 +115,15 @@
             // 
             // boxNotImportNotUg
             // 
+            this.boxNotImportNotUg.AcceptsTab = true;
             this.boxNotImportNotUg.BackColor = System.Drawing.Color.DarkKhaki;
             this.boxNotImportNotUg.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.boxNotImportNotUg.ContextMenuStrip = this.contextMenuStrip1;
+            this.boxNotImportNotUg.EnableAutoDragDrop = true;
             this.boxNotImportNotUg.Font = new System.Drawing.Font("Yu Gothic UI", 12F);
             this.boxNotImportNotUg.ForeColor = System.Drawing.Color.White;
             this.boxNotImportNotUg.Location = new System.Drawing.Point(753, 408);
+            this.boxNotImportNotUg.MaxLength = 15000;
             this.boxNotImportNotUg.Name = "boxNotImportNotUg";
             this.boxNotImportNotUg.Size = new System.Drawing.Size(440, 270);
             this.boxNotImportNotUg.TabIndex = 2;
@@ -80,11 +131,15 @@
             // 
             // boxNotImportUg
             // 
+            this.boxNotImportUg.AcceptsTab = true;
             this.boxNotImportUg.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.boxNotImportUg.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.boxNotImportUg.ContextMenuStrip = this.contextMenuStrip1;
+            this.boxNotImportUg.EnableAutoDragDrop = true;
             this.boxNotImportUg.Font = new System.Drawing.Font("Yu Gothic UI", 12F);
             this.boxNotImportUg.ForeColor = System.Drawing.Color.White;
             this.boxNotImportUg.Location = new System.Drawing.Point(286, 408);
+            this.boxNotImportUg.MaxLength = 15000;
             this.boxNotImportUg.Name = "boxNotImportUg";
             this.boxNotImportUg.Size = new System.Drawing.Size(440, 270);
             this.boxNotImportUg.TabIndex = 3;
@@ -141,33 +196,114 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 16F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.label5.Location = new System.Drawing.Point(93, 9);
+            this.label5.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 15F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.SlateGray;
+            this.label5.Location = new System.Drawing.Point(95, 9);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(173, 37);
+            this.label5.Size = new System.Drawing.Size(160, 35);
             this.label5.TabIndex = 8;
             this.label5.Text = "Всего задач:";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btn_done);
+            this.panel1.Controls.Add(this.btn_add_task);
+            this.panel1.Controls.Add(this.btn_date);
+            this.panel1.Controls.Add(this.btn_menu);
+            this.panel1.Controls.Add(this.btn_home);
             this.panel1.Location = new System.Drawing.Point(0, -1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(87, 723);
+            this.panel1.Size = new System.Drawing.Size(73, 723);
             this.panel1.TabIndex = 9;
             // 
-            // button1
+            // btn_done
             // 
-            this.button1.BackgroundImage = global::EisenhowerMatrix.Properties.Resources.icons8_главная_77;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.Location = new System.Drawing.Point(0, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(84, 68);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_done.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_done.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_done.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_done.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_done.Font = new System.Drawing.Font("Segoe MDL2 Assets", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_done.ForeColor = System.Drawing.Color.SlateGray;
+            this.btn_done.Location = new System.Drawing.Point(-5, 266);
+            this.btn_done.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_done.Name = "btn_done";
+            this.btn_done.Size = new System.Drawing.Size(83, 68);
+            this.btn_done.TabIndex = 13;
+            this.btn_done.Text = "";
+            this.btn_done.UseVisualStyleBackColor = true;
+            this.btn_done.Click += new System.EventHandler(this.btn_done_Click);
+            // 
+            // btn_add_task
+            // 
+            this.btn_add_task.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_add_task.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_add_task.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_add_task.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_add_task.Font = new System.Drawing.Font("Segoe MDL2 Assets", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_add_task.ForeColor = System.Drawing.Color.SlateGray;
+            this.btn_add_task.Location = new System.Drawing.Point(-5, 200);
+            this.btn_add_task.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_add_task.Name = "btn_add_task";
+            this.btn_add_task.Size = new System.Drawing.Size(83, 68);
+            this.btn_add_task.TabIndex = 12;
+            this.btn_add_task.Text = "";
+            this.btn_add_task.UseVisualStyleBackColor = true;
+            this.btn_add_task.Click += new System.EventHandler(this.btn_add_task_Click);
+            // 
+            // btn_date
+            // 
+            this.btn_date.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_date.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_date.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_date.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_date.Font = new System.Drawing.Font("Segoe MDL2 Assets", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_date.ForeColor = System.Drawing.Color.SlateGray;
+            this.btn_date.Location = new System.Drawing.Point(-5, 133);
+            this.btn_date.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_date.Name = "btn_date";
+            this.btn_date.Size = new System.Drawing.Size(83, 68);
+            this.btn_date.TabIndex = 11;
+            this.btn_date.Text = "";
+            this.btn_date.UseVisualStyleBackColor = true;
+            this.btn_date.Click += new System.EventHandler(this.btn_date_Click);
+            // 
+            // btn_menu
+            // 
+            this.btn_menu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_menu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_menu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_menu.Font = new System.Drawing.Font("Segoe MDL2 Assets", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_menu.ForeColor = System.Drawing.Color.SlateGray;
+            this.btn_menu.Location = new System.Drawing.Point(-5, 0);
+            this.btn_menu.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_menu.Name = "btn_menu";
+            this.btn_menu.Size = new System.Drawing.Size(86, 68);
+            this.btn_menu.TabIndex = 10;
+            this.btn_menu.Tag = "";
+            this.btn_menu.Text = "";
+            this.btn_menu.UseVisualStyleBackColor = true;
+            // 
+            // btn_home
+            // 
+            this.btn_home.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_home.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_home.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_home.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_home.Font = new System.Drawing.Font("Segoe MDL2 Assets", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_home.ForeColor = System.Drawing.Color.SlateGray;
+            this.btn_home.Location = new System.Drawing.Point(-5, 67);
+            this.btn_home.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_home.Name = "btn_home";
+            this.btn_home.Size = new System.Drawing.Size(83, 68);
+            this.btn_home.TabIndex = 10;
+            this.btn_home.Text = "";
+            this.btn_home.UseVisualStyleBackColor = true;
+            this.btn_home.Click += new System.EventHandler(this.btn_home_Click);
             // 
             // Form1
             // 
@@ -189,6 +325,8 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Матрица Эйзенхауэра";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -207,7 +345,15 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_home;
+        public System.Windows.Forms.Button btn_menu;
+        private System.Windows.Forms.Button btn_date;
+        private System.Windows.Forms.Button btn_add_task;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem копироватьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem вставитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem вырезатьToolStripMenuItem;
+        private System.Windows.Forms.Button btn_done;
     }
 }
 
