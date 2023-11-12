@@ -32,9 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.boxImportantNotUg = new System.Windows.Forms.RichTextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.копироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.вставитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.вырезатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CopyToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.PasteToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.CropToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.boxImportantUg = new System.Windows.Forms.RichTextBox();
             this.boxNotImportNotUg = new System.Windows.Forms.RichTextBox();
             this.boxNotImportUg = new System.Windows.Forms.RichTextBox();
@@ -66,37 +67,51 @@
             this.boxImportantNotUg.Margin = new System.Windows.Forms.Padding(2);
             this.boxImportantNotUg.MaxLength = 15000;
             this.boxImportantNotUg.Name = "boxImportantNotUg";
+            this.boxImportantNotUg.ReadOnly = true;
             this.boxImportantNotUg.Size = new System.Drawing.Size(330, 219);
             this.boxImportantNotUg.TabIndex = 0;
             this.boxImportantNotUg.Text = "";
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.contextMenuStrip1.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.копироватьToolStripMenuItem,
-            this.вставитьToolStripMenuItem,
-            this.вырезатьToolStripMenuItem});
+            this.CopyToolStripMenu,
+            this.PasteToolStripMenu,
+            this.CropToolStripMenu,
+            this.DeleteToolStripMenu});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(163, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 128);
             // 
-            // копироватьToolStripMenuItem
+            // CopyToolStripMenu
             // 
-            this.копироватьToolStripMenuItem.Name = "копироватьToolStripMenuItem";
-            this.копироватьToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
-            this.копироватьToolStripMenuItem.Text = "Копировать";
+            this.CopyToolStripMenu.Name = "CopyToolStripMenu";
+            this.CopyToolStripMenu.Size = new System.Drawing.Size(210, 24);
+            this.CopyToolStripMenu.Text = "Копировать";
+            this.CopyToolStripMenu.Click += new System.EventHandler(this.CopyToolStripMenu_Click);
             // 
-            // вставитьToolStripMenuItem
+            // PasteToolStripMenu
             // 
-            this.вставитьToolStripMenuItem.Name = "вставитьToolStripMenuItem";
-            this.вставитьToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
-            this.вставитьToolStripMenuItem.Text = "Вставить";
+            this.PasteToolStripMenu.Name = "PasteToolStripMenu";
+            this.PasteToolStripMenu.Size = new System.Drawing.Size(210, 24);
+            this.PasteToolStripMenu.Text = "Вставить";
+            this.PasteToolStripMenu.Click += new System.EventHandler(this.PasteToolStripMenu_Click);
             // 
-            // вырезатьToolStripMenuItem
+            // CropToolStripMenu
             // 
-            this.вырезатьToolStripMenuItem.Name = "вырезатьToolStripMenuItem";
-            this.вырезатьToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
-            this.вырезатьToolStripMenuItem.Text = "Вырезать";
+            this.CropToolStripMenu.Name = "CropToolStripMenu";
+            this.CropToolStripMenu.Size = new System.Drawing.Size(210, 24);
+            this.CropToolStripMenu.Text = "Вырезать";
+            this.CropToolStripMenu.Click += new System.EventHandler(this.CropToolStripMenu_Click);
+            // 
+            // DeleteToolStripMenu
+            // 
+            this.DeleteToolStripMenu.Name = "DeleteToolStripMenu";
+            this.DeleteToolStripMenu.Size = new System.Drawing.Size(210, 24);
+            this.DeleteToolStripMenu.Text = "Удалить";
+            this.DeleteToolStripMenu.Click += new System.EventHandler(this.DeleteToolStripMenu_Click);
             // 
             // boxImportantUg
             // 
@@ -112,6 +127,7 @@
             this.boxImportantUg.Margin = new System.Windows.Forms.Padding(2);
             this.boxImportantUg.MaxLength = 15000;
             this.boxImportantUg.Name = "boxImportantUg";
+            this.boxImportantUg.ReadOnly = true;
             this.boxImportantUg.Size = new System.Drawing.Size(330, 219);
             this.boxImportantUg.TabIndex = 1;
             this.boxImportantUg.Text = "";
@@ -129,6 +145,7 @@
             this.boxNotImportNotUg.Margin = new System.Windows.Forms.Padding(2);
             this.boxNotImportNotUg.MaxLength = 15000;
             this.boxNotImportNotUg.Name = "boxNotImportNotUg";
+            this.boxNotImportNotUg.ReadOnly = true;
             this.boxNotImportNotUg.Size = new System.Drawing.Size(330, 219);
             this.boxNotImportNotUg.TabIndex = 2;
             this.boxNotImportNotUg.Text = "";
@@ -146,6 +163,7 @@
             this.boxNotImportUg.Margin = new System.Windows.Forms.Padding(2);
             this.boxNotImportUg.MaxLength = 15000;
             this.boxNotImportUg.Name = "boxNotImportUg";
+            this.boxNotImportUg.ReadOnly = true;
             this.boxNotImportUg.Size = new System.Drawing.Size(330, 219);
             this.boxNotImportUg.TabIndex = 3;
             this.boxNotImportUg.Text = "";
@@ -364,10 +382,11 @@
         private System.Windows.Forms.Button btn_date;
         private System.Windows.Forms.Button btn_add_task;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem копироватьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem вставитьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem вырезатьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CopyToolStripMenu;
+        private System.Windows.Forms.ToolStripMenuItem PasteToolStripMenu;
+        private System.Windows.Forms.ToolStripMenuItem CropToolStripMenu;
         private System.Windows.Forms.Button btn_done;
+        private System.Windows.Forms.ToolStripMenuItem DeleteToolStripMenu;
     }
 }
 

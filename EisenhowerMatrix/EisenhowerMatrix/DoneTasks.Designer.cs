@@ -35,6 +35,7 @@
             this.btn_menu = new System.Windows.Forms.Button();
             this.btn_home = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,6 +69,7 @@
             this.btn_done.TabIndex = 13;
             this.btn_done.Text = "";
             this.btn_done.UseVisualStyleBackColor = true;
+            this.btn_done.Click += new System.EventHandler(this.btn_done_Click);
             // 
             // btn_add_task
             // 
@@ -85,6 +87,7 @@
             this.btn_add_task.TabIndex = 12;
             this.btn_add_task.Text = "";
             this.btn_add_task.UseVisualStyleBackColor = true;
+            this.btn_add_task.Click += new System.EventHandler(this.btn_add_task_Click);
             // 
             // btn_date
             // 
@@ -102,6 +105,7 @@
             this.btn_date.TabIndex = 11;
             this.btn_date.Text = "";
             this.btn_date.UseVisualStyleBackColor = true;
+            this.btn_date.Click += new System.EventHandler(this.btn_date_Click);
             // 
             // btn_menu
             // 
@@ -135,6 +139,7 @@
             this.btn_home.TabIndex = 10;
             this.btn_home.Text = "";
             this.btn_home.UseVisualStyleBackColor = true;
+            this.btn_home.Click += new System.EventHandler(this.btn_home_Click);
             // 
             // label5
             // 
@@ -148,17 +153,32 @@
             this.label5.TabIndex = 14;
             this.label5.Text = "Выполненные задачи:";
             // 
+            // listBox1
+            // 
+            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBox1.Font = new System.Drawing.Font("Yu Gothic UI", 12F);
+            this.listBox1.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 28;
+            this.listBox1.Location = new System.Drawing.Point(160, 71);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(701, 420);
+            this.listBox1.TabIndex = 15;
+            // 
             // DoneTasks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(914, 585);
+            this.ControlBox = false;
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "DoneTasks";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Выполненные задачи";
             this.panel1.ResumeLayout(false);
@@ -176,5 +196,6 @@
         public System.Windows.Forms.Button btn_menu;
         private System.Windows.Forms.Button btn_home;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
