@@ -1,26 +1,12 @@
-﻿using System.Drawing.Drawing2D;
+﻿using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using System;
 
 namespace EisenhowerMatrix
 {
     internal class Drawer
     {
-        //public static GraphicsPath GetRoundedRectangle(Rectangle rect, int d)
-        //{
-        //    GraphicsPath gp = new GraphicsPath();
-
-        //    gp.AddArc(rect.X, rect.Y, d, d, 180, 90);
-        //    gp.AddArc(rect.X + rect.Width - d, rect.Y, d, d, 270, 90);
-        //    gp.AddArc(rect.X + rect.Width - d, rect.Y + rect.Height - d, d, d, 0, 90);
-        //    gp.AddArc(rect.X, rect.Y + rect.Height - d, d, d, 90, 90);
-
-        //    gp.CloseFigure();
-
-        //    return gp;
-        //}
 
     }
     public static class RichTextBoxExtensions

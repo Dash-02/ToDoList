@@ -11,3 +11,47 @@ D:\JavaScript\For_git_push\lpp\list\todolist\EisenhowerMatrix\EisenhowerMatrix\o
 D:\JavaScript\For_git_push\lpp\list\todolist\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.pdb
 D:\JavaScript\For_git_push\lpp\list\todolist\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.DoneTasks.resources
 D:\JavaScript\For_git_push\lpp\list\todolist\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\WinFormsApp1.Form1.resources
+C:\Users\amets\OneDrive\Рабочий стол\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.csproj.AssemblyReference.cache
+C:\Users\amets\OneDrive\Рабочий стол\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.DoneTasks.resources
+C:\Users\amets\OneDrive\Рабочий стол\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.Properties.Resources.resources
+C:\Users\amets\OneDrive\Рабочий стол\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.csproj.GenerateResource.cache
+C:\Users\amets\OneDrive\Рабочий стол\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.csproj.CoreCompileInputs.cache
+C:\Users\amets\OneDrive\Рабочий стол\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.exe
+C:\Users\amets\OneDrive\Рабочий стол\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.pdb
+C:\Users\amets\OneDrive\Рабочий стол\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.Form1.resources
+C:\Users\amets\OneDrive\Рабочий стол\EisenhowerMatrix\EisenhowerMatrix\bin\Debug\EisenhowerMatrix.exe.config
+C:\Users\amets\OneDrive\Рабочий стол\EisenhowerMatrix\EisenhowerMatrix\bin\Debug\EisenhowerMatrix.exe
+C:\Users\amets\OneDrive\Рабочий стол\EisenhowerMatrix\EisenhowerMatrix\bin\Debug\EisenhowerMatrix.pdb
+C:\Users\amets\OneDrive\Рабочий стол\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.AddTaskForm.resources
+C:\Users\Admin\Desktop\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.csproj.SuggestedBindingRedirects.cache
+C:\Users\Admin\Desktop\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.AddTaskForm.resources
+C:\Users\Admin\Desktop\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.DoneTasks.resources
+C:\Users\Admin\Desktop\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.Form1.resources
+C:\Users\Admin\Desktop\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.Properties.Resources.resources
+C:\Users\Admin\Desktop\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.exe
+C:\Users\Admin\Desktop\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.pdb
+C:\Users\Admin\Desktop\EisenhowerMatrix\EisenhowerMatrix\bin\Debug\EisenhowerMatrix.exe.config
+C:\Users\Admin\Desktop\EisenhowerMatrix\EisenhowerMatrix\bin\Debug\EisenhowerMatrix.exe
+C:\Users\Admin\Desktop\EisenhowerMatrix\EisenhowerMatrix\bin\Debug\EisenhowerMatrix.pdb
+C:\Users\Admin\Desktop\EisenhowerMatrix\EisenhowerMatrix\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Admin\Desktop\EisenhowerMatrix\EisenhowerMatrix\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Admin\Desktop\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.csproj.CopyComplete
+C:\Users\Admin\Desktop\task\EisenhowerMatrix\EisenhowerMatrix\bin\Debug\EisenhowerMatrix.exe.config
+C:\Users\Admin\Desktop\task\EisenhowerMatrix\EisenhowerMatrix\bin\Debug\EisenhowerMatrix.exe
+C:\Users\Admin\Desktop\task\EisenhowerMatrix\EisenhowerMatrix\bin\Debug\EisenhowerMatrix.pdb
+C:\Users\Admin\Desktop\task\EisenhowerMatrix\EisenhowerMatrix\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Admin\Desktop\task\EisenhowerMatrix\EisenhowerMatrix\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Admin\Desktop\task\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\task\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.csproj.SuggestedBindingRedirects.cache
+C:\Users\Admin\Desktop\task\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.AddTaskForm.resources
+C:\Users\Admin\Desktop\task\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.DoneTasks.resources
+C:\Users\Admin\Desktop\task\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.Form1.resources
+C:\Users\Admin\Desktop\task\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.Properties.Resources.resources
+C:\Users\Admin\Desktop\task\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\task\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\task\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.csproj.CopyComplete
+C:\Users\Admin\Desktop\task\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.exe
+C:\Users\Admin\Desktop\task\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.pdb
