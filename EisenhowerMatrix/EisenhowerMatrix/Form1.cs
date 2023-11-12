@@ -107,11 +107,38 @@ namespace EisenhowerMatrix
                 {
                     boxNotImportNotUg.AppendText(task.Title + Environment.NewLine);
                 }
-            }
+                boxNotImportUg.AppendText(task.Title + Environment.NewLine);
+                task.Click += TaskClick; // Добавляем обработчик события Click для задачи
+                else if (task.Priority == "Не-важно-не-срочно")
+                {
+                    boxNotImportNotUg.AppendText(task.Title + Environment.NewLine);
+                    task.Click += TaskClick; // Добавляем обработчик события Click для задачи
+                }
+            }   
         }
+        private void TaskClick(object sender, EventArgs e)
+        {
+            Task clickedTask = (Task)sender;
 
-        #region StripMenuTools
-        private void CopyToolStripMenu_Click(object sender, EventArgs e)
+            // Изменяем статус задачи на "выполнено"
+            clickedTask.Status = "выполнено";
+
+            // Переносим задачу в форму DoneTasks
+            DoneTasks.Add(clickedTask);
+            tasks.Add(newTask);
+            // Удаляем задачу из списка tasks
+            tasks.Remove(clickedTask);
+
+            // Обновляем отображение задач
+            UpdateTasksDisplay();
+
+            // Также сохраните изменения в файле JSON
+            SaveTasksToJson();
+        }
+    
+
+    #region StripMenuTools
+    private void CopyToolStripMenu_Click(object sender, EventArgs e)
         {
 
         }

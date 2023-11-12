@@ -83,33 +83,33 @@
             this.CropToolStripMenu,
             this.DeleteToolStripMenu});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 128);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(163, 100);
             // 
             // CopyToolStripMenu
             // 
             this.CopyToolStripMenu.Name = "CopyToolStripMenu";
-            this.CopyToolStripMenu.Size = new System.Drawing.Size(210, 24);
+            this.CopyToolStripMenu.Size = new System.Drawing.Size(162, 24);
             this.CopyToolStripMenu.Text = "Копировать";
             this.CopyToolStripMenu.Click += new System.EventHandler(this.CopyToolStripMenu_Click);
             // 
             // PasteToolStripMenu
             // 
             this.PasteToolStripMenu.Name = "PasteToolStripMenu";
-            this.PasteToolStripMenu.Size = new System.Drawing.Size(210, 24);
+            this.PasteToolStripMenu.Size = new System.Drawing.Size(162, 24);
             this.PasteToolStripMenu.Text = "Вставить";
             this.PasteToolStripMenu.Click += new System.EventHandler(this.PasteToolStripMenu_Click);
             // 
             // CropToolStripMenu
             // 
             this.CropToolStripMenu.Name = "CropToolStripMenu";
-            this.CropToolStripMenu.Size = new System.Drawing.Size(210, 24);
+            this.CropToolStripMenu.Size = new System.Drawing.Size(162, 24);
             this.CropToolStripMenu.Text = "Вырезать";
             this.CropToolStripMenu.Click += new System.EventHandler(this.CropToolStripMenu_Click);
             // 
             // DeleteToolStripMenu
             // 
             this.DeleteToolStripMenu.Name = "DeleteToolStripMenu";
-            this.DeleteToolStripMenu.Size = new System.Drawing.Size(210, 24);
+            this.DeleteToolStripMenu.Size = new System.Drawing.Size(162, 24);
             this.DeleteToolStripMenu.Text = "Удалить";
             this.DeleteToolStripMenu.Click += new System.EventHandler(this.DeleteToolStripMenu_Click);
             // 
@@ -131,6 +131,7 @@
             this.boxImportantUg.Size = new System.Drawing.Size(330, 219);
             this.boxImportantUg.TabIndex = 1;
             this.boxImportantUg.Text = "";
+            this.boxImportantUg.Click += new System.EventHandler(this.TaskClick);
             // 
             // boxNotImportNotUg
             // 

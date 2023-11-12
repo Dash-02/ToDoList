@@ -1,1 +1,1 @@
-[{"Title":"задача 1","Priority":"Важно-срочно","IsCompleted":false},{"Title":"задача 2 (только чтение)","Priority":"Важно-не-срочно","IsCompleted":false}]
+[{"Title":"задача 1","Priority":"Важно-срочно","IsCompleted":true},{"Title":"задача 2 (только чтение)","Priority":"Важно-не-срочно","IsCompleted":true},{"Title":"задача 3 (сделано)","Priority":"Важно-срочно","IsCompleted":true},{"Title":"задача 4 тест","Priority":null,"IsCompleted":true},{"Title":"задача 5 тест","Priority":"Важно-срочно","IsCompleted":true}]
