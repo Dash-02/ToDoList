@@ -1,41 +1,30 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace EisenhowerMatrix
 {
     public partial class Form1 : Form
     {
         private List<Task> tasks;
+        private List<Task> completedTasks;
         public Form1()
         {
             InitializeComponent();
             tasks = new List<Task>();
+            completedTasks = new List<Task>();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            boxImportantUg.SetInnerMargins(10, 8, 8, 8);
-            boxImportantNotUg.SetInnerMargins(10, 8, 8, 8);
-            boxNotImportUg.SetInnerMargins(10, 8, 8, 8);
-            boxNotImportNotUg.SetInnerMargins(10, 8, 8, 8);
-
-            tasks = LoadTasksFromJson();
+            LoadTasksFromJson();
             UpdateTasksDisplay();
         }
         #region ButtonsMenu
         private void btn_home_Click(object sender, EventArgs e)
         {
-            Refresh();
+            UpdateTasksDisplay();
         }
 
         private void btn_date_Click(object sender, EventArgs e)
@@ -45,7 +34,7 @@ namespace EisenhowerMatrix
 
         private void btn_done_Click(object sender, EventArgs e)
         {
-            DoneTasks DoneTasks = new DoneTasks(tasks);
+            DoneTasks DoneTasks = new DoneTasks(completedTasks);
             DoneTasks.ShowDialog();
         }
         private void btn_add_Click(object sender, EventArgs e)
@@ -63,82 +52,68 @@ namespace EisenhowerMatrix
             }
         }
         #endregion
+        
+        private void UpdateTasksDisplay()
+        {
+            lsBoxImportantUg.Items.Clear();
+            lsBoxImportantNotUg.Items.Clear();
+            lsBoxNotImportUg.Items.Clear();
+            lsBoxNotImportNotUg.Items.Clear();
+
+
+            foreach (Task task in tasks)
+            {
+                switch (task.Priority)
+                {
+                    case "Важно-срочно":
+                        lsBoxImportantUg.Items.Add(task);
+                        break;
+                    case "Важно-не-срочно":
+                        lsBoxImportantNotUg.Items.Add(task);
+                        break;
+                    case "Не-важно-срочно":
+                        lsBoxNotImportUg.Items.Add(task);
+                        break;
+                    case "Не-важно-не-срочно":
+                        lsBoxNotImportNotUg.Items.Add(task);
+                        break;
+                }
+            }
+        }
         private void SaveTasksToJson()
         {
             string json = JsonConvert.SerializeObject(tasks);
             File.WriteAllText("tasks.json", json);
         }
 
-        private List<Task> LoadTasksFromJson()
+        private void LoadTasksFromJson()
         {
             if (File.Exists("tasks.json"))
             {
                 string json = File.ReadAllText("tasks.json");
                 if (!string.IsNullOrEmpty(json))
                 {
-                    return JsonConvert.DeserializeObject<List<Task>>(json);
+                    tasks = JsonConvert.DeserializeObject<List<Task>>(json);
                 }
             }
-            return new List<Task>();
         }
 
-        private void UpdateTasksDisplay()
-        {
-            boxImportantUg.Clear();
-            boxImportantNotUg.Clear();
-            boxNotImportUg.Clear();
-            boxNotImportNotUg.Clear();
-
-            foreach (Task task in tasks)
-            {
-                if (task.Priority == "Важно-срочно")
-                {
-                    boxImportantUg.AppendText(task.Title + Environment.NewLine);
-                }
-                else if (task.Priority == "Важно-не-срочно")
-                {
-                    boxImportantNotUg.AppendText(task.Title + Environment.NewLine);
-                }
-                else if (task.Priority == "Не-важно-срочно")
-                {
-                    boxNotImportUg.AppendText(task.Title + Environment.NewLine);
-                }
-                else if (task.Priority == "Не-важно-не-срочно")
-                {
-                    boxNotImportNotUg.AppendText(task.Title + Environment.NewLine);
-                }
-                boxNotImportUg.AppendText(task.Title + Environment.NewLine);
-                task.Click += TaskClick; // Добавляем обработчик события Click для задачи
-                else if (task.Priority == "Не-важно-не-срочно")
-                {
-                    boxNotImportNotUg.AppendText(task.Title + Environment.NewLine);
-                    task.Click += TaskClick; // Добавляем обработчик события Click для задачи
-                }
-            }   
-        }
         private void TaskClick(object sender, EventArgs e)
         {
-            Task clickedTask = (Task)sender;
+            ListBox listBox = (ListBox)sender;
 
-            // Изменяем статус задачи на "выполнено"
-            clickedTask.Status = "выполнено";
-
-            // Переносим задачу в форму DoneTasks
-            DoneTasks.Add(clickedTask);
-            tasks.Add(newTask);
-            // Удаляем задачу из списка tasks
-            tasks.Remove(clickedTask);
-
-            // Обновляем отображение задач
-            UpdateTasksDisplay();
-
-            // Также сохраните изменения в файле JSON
-            SaveTasksToJson();
+            if (listBox.SelectedItem != null && listBox.SelectedItem is Task)
+            {
+                Task clickedTask = (Task)listBox.SelectedItem;
+                clickedTask.IsCompleted = true;
+                completedTasks.Add(clickedTask);
+                tasks.Remove(clickedTask);
+                SaveTasksToJson();
+                UpdateTasksDisplay();
+            }
         }
-    
-
-    #region StripMenuTools
-    private void CopyToolStripMenu_Click(object sender, EventArgs e)
+        #region StripMenuTools
+        private void CopyToolStripMenu_Click(object sender, EventArgs e)
         {
 
         }
@@ -170,6 +145,10 @@ namespace EisenhowerMatrix
             Title = title;
             Priority = priority;
             IsCompleted = false;
+        }
+        public override string ToString()
+        {
+            return Title;
         }
     }
 }

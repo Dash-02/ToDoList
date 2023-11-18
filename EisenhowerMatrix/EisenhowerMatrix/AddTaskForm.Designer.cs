@@ -46,7 +46,7 @@
             this.textBox1.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox1.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.textBox1.Location = new System.Drawing.Point(259, 121);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(399, 49);
@@ -81,7 +81,7 @@
             this.radioBtn_urgentImportant.AutoSize = true;
             this.radioBtn_urgentImportant.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.radioBtn_urgentImportant.Location = new System.Drawing.Point(259, 274);
-            this.radioBtn_urgentImportant.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioBtn_urgentImportant.Margin = new System.Windows.Forms.Padding(4);
             this.radioBtn_urgentImportant.Name = "radioBtn_urgentImportant";
             this.radioBtn_urgentImportant.Size = new System.Drawing.Size(161, 27);
             this.radioBtn_urgentImportant.TabIndex = 3;
@@ -94,7 +94,7 @@
             this.radioBtn_urgentNotImportant.AutoSize = true;
             this.radioBtn_urgentNotImportant.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.radioBtn_urgentNotImportant.Location = new System.Drawing.Point(259, 331);
-            this.radioBtn_urgentNotImportant.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioBtn_urgentNotImportant.Margin = new System.Windows.Forms.Padding(4);
             this.radioBtn_urgentNotImportant.Name = "radioBtn_urgentNotImportant";
             this.radioBtn_urgentNotImportant.Size = new System.Drawing.Size(201, 27);
             this.radioBtn_urgentNotImportant.TabIndex = 4;
@@ -107,7 +107,7 @@
             this.radioBtn_notUrgentImportant.AutoSize = true;
             this.radioBtn_notUrgentImportant.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.radioBtn_notUrgentImportant.Location = new System.Drawing.Point(459, 274);
-            this.radioBtn_notUrgentImportant.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioBtn_notUrgentImportant.Margin = new System.Windows.Forms.Padding(4);
             this.radioBtn_notUrgentImportant.Name = "radioBtn_notUrgentImportant";
             this.radioBtn_notUrgentImportant.Size = new System.Drawing.Size(199, 27);
             this.radioBtn_notUrgentImportant.TabIndex = 5;
@@ -120,7 +120,7 @@
             this.radioBtn_notUrgentNotImportant.AutoSize = true;
             this.radioBtn_notUrgentNotImportant.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.radioBtn_notUrgentNotImportant.Location = new System.Drawing.Point(459, 331);
-            this.radioBtn_notUrgentNotImportant.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioBtn_notUrgentNotImportant.Margin = new System.Windows.Forms.Padding(4);
             this.radioBtn_notUrgentNotImportant.Name = "radioBtn_notUrgentNotImportant";
             this.radioBtn_notUrgentNotImportant.Size = new System.Drawing.Size(211, 27);
             this.radioBtn_notUrgentNotImportant.TabIndex = 6;
@@ -135,7 +135,7 @@
             this.btn_save.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_save.ForeColor = System.Drawing.Color.SlateGray;
             this.btn_save.Location = new System.Drawing.Point(362, 403);
-            this.btn_save.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_save.Margin = new System.Windows.Forms.Padding(4);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(183, 42);
             this.btn_save.TabIndex = 7;
@@ -178,7 +178,7 @@
             this.Controls.Add(this.textBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddTaskForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
