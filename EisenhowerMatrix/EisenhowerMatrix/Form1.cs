@@ -79,6 +79,7 @@ namespace EisenhowerMatrix
                         break;
                 }
             }
+            label5.Text = $"Всего задач: {tasks.Count}";
         }
         private void SaveTasksToJson()
         {
@@ -129,6 +130,10 @@ namespace EisenhowerMatrix
         }
 
         private void DeleteToolStripMenu_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }

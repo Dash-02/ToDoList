@@ -55,14 +55,12 @@
     <Compile Include="AddTaskForm.Designer.cs">
       <DependentUpon>AddTaskForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Box.cs" />
     <Compile Include="DoneTasks.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DoneTasks.Designer.cs">
       <DependentUpon>DoneTasks.cs</DependentUpon>
     </Compile>
-    <Compile Include="Drawer.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +101,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
