@@ -5,11 +5,11 @@ namespace EisenhowerMatrix
 {
     public partial class AddTaskForm : Form
     {
-        
         public AddTaskForm()
         {
             InitializeComponent();
         }
+
         public string TaskTitle { get; private set; }
         public string Priority { get; private set; }
 
@@ -27,6 +27,11 @@ namespace EisenhowerMatrix
                     Priority = "Важно-не-срочно";
                 else if (radioBtn_notUrgentNotImportant.Checked)
                     Priority = "Не-важно-не-срочно";
+                else
+                {
+                    MessageBox.Show("Выберите приоритет задачи", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
                 DialogResult = DialogResult.OK;
                 Close();
