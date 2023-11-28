@@ -2,26 +2,23 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace EisenhowerMatrix
 {
     public partial class Form1 : Form
     {
-        private List<Task> allTasks;
         private List<Task> tasks;
         private List<Task> completedTasks;
         public Form1()
         {
             InitializeComponent();
-            allTasks = LoadAllTasks();
-            tasks = allTasks.Where(t => !t.IsCompleted).ToList();
-            UpdateTasksDisplay();
+            tasks = new List<Task>();
+            completedTasks = new List<Task>();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            LoadAllTasks();
+            LoadTasksFromJson();
             UpdateTasksDisplay();
         }
         #region ButtonsMenu
@@ -38,12 +35,8 @@ namespace EisenhowerMatrix
 
         private void btn_done_Click(object sender, EventArgs e)
         {
-            DoneTasks doneTaskForm = new DoneTasks(completedTasks);
-            doneTaskForm.ShowDialog();
-            completedTasks = doneTaskForm.CompletedTasks;
-            tasks = allTasks.Where(t => !t.IsCompleted).ToList();
-            UpdateTasksDisplay();
-            SaveTasksToJson();
+            DoneTasks doneTasksForm = new DoneTasks();
+            doneTasksForm.ShowDialog();
         }
         private void btn_add_Click(object sender, EventArgs e)
         {
@@ -53,11 +46,10 @@ namespace EisenhowerMatrix
                 string taskTitle = addTaskForm.TaskTitle;
                 string priority = addTaskForm.Priority;
 
-                Task newTask = new Task(taskTitle, priority, false);
+                Task newTask = new Task(taskTitle, priority);
                 tasks.Add(newTask);
-                tasks = allTasks.Where(t => !t.IsCompleted).ToList();
-                UpdateTasksDisplay();
                 SaveTasksToJson();
+                UpdateTasksDisplay();
             }
         }
         #endregion
@@ -96,17 +88,22 @@ namespace EisenhowerMatrix
             File.WriteAllText("tasks.json", json);
         }
 
-        private List<Task> LoadAllTasks()
+        private void SaveCompletedTasks()
+        {
+            string json = JsonConvert.SerializeObject(completedTasks, Formatting.Indented);
+            File.WriteAllText("completedTasks.json", json);
+        }
+
+        private void LoadTasksFromJson()
         {
             if (File.Exists("tasks.json"))
             {
                 string json = File.ReadAllText("tasks.json");
                 if (!string.IsNullOrEmpty(json))
                 {
-                    return JsonConvert.DeserializeObject<List<Task>>(json) ?? new List<Task>();
+                    tasks = JsonConvert.DeserializeObject<List<Task>>(json);
                 }
             }
-            return new List<Task>();
         }
 
         private void TaskClick(object sender, EventArgs e)
@@ -120,6 +117,7 @@ namespace EisenhowerMatrix
                 completedTasks.Add(clickedTask);
                 tasks.Remove(clickedTask);
                 SaveTasksToJson();
+                SaveCompletedTasks();
                 UpdateTasksDisplay();
             }
         }
@@ -169,7 +167,7 @@ namespace EisenhowerMatrix
                 string clipboardText = Clipboard.GetText();
                 if (!string.IsNullOrEmpty(clipboardText))
                 {
-                    Task newTask = new Task(clipboardText, priority, false);
+                    Task newTask = new Task(clipboardText, priority);
                     tasks.Add(newTask);
                     SaveTasksToJson();
                     UpdateTasksDisplay();
@@ -233,16 +231,15 @@ namespace EisenhowerMatrix
         public string Priority { get; set; }
         public bool IsCompleted { get; set; }
 
-        public Task(string title, string priority, bool isCompleted)
+        public Task(string title, string priority)
         {
             Title = title;
             Priority = priority;
-            IsCompleted = isCompleted;
+            IsCompleted = false;
         }
-
         public override string ToString()
         {
-            return $"{Title} - {Priority}";
+            return Title;
         }
     }
 }
