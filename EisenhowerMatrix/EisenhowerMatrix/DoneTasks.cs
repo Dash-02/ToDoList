@@ -9,15 +9,21 @@ namespace EisenhowerMatrix
     public partial class DoneTasks : Form
     {
         private List<Task> completedTasks;
-        private List<Task> completedTasks2;
 
-        public List<Task> CompletedTasks { get; internal set; }
-        public DoneTasks()
+        public List<Task> CompletedTasks { get { return completedTasks; } }
+
+        public DoneTasks(List<Task> completedTasks)
         {
             InitializeComponent();
-            completedTasks = LoadCompletedTasks();
+            this.completedTasks = LoadCompletedTasks();
             UpdateCompletedTasks();
             label1.Text = $"Выполненные задачи: {completedTasks.Count}";
+        }
+
+        private void DoneTasks_Load(object sender, EventArgs e)
+        {
+            LoadCompletedTasks();
+            UpdateCompletedTasks();
         }
 
         private List<Task> LoadCompletedTasks()
@@ -41,14 +47,13 @@ namespace EisenhowerMatrix
                 listBox1.Items.Add(task);
             }
         }
+
         private void SaveCompletedTasks()
         {
-            List<Task> existingCompletedTasks = LoadCompletedTasks();
-            existingCompletedTasks.AddRange(completedTasks);
-            string json = JsonConvert.SerializeObject(existingCompletedTasks, Formatting.Indented);
-            File.WriteAllText("completedTasks.json", json);
+            //string json = JsonConvert.SerializeObject(completedTasks, Formatting.Indented);
+            //File.AppendAllText("completedTasks.json", json);
+            label1.Text = $"Выполненные задачи: {completedTasks.Count}";
         }
-
 
         private void btn_home_Click(object sender, EventArgs e)
         {
@@ -77,6 +82,13 @@ namespace EisenhowerMatrix
 
         private void DeleteToolStripMenu_Click(object sender, EventArgs e)
         {
+            //if (listBox1.SelectedItem is Task selectedTask)
+            //{
+            //    completedTasks.Remove(selectedTask);
+            //    UpdateCompletedTasks();
+            //    SaveCompletedTasks();
+            //}
+
             ToolStripMenuItem toolStripMenuItem = (ToolStripMenuItem)sender;
             if (toolStripMenuItem.GetCurrentParent() is ContextMenuStrip contextMenuStrip && contextMenuStrip.SourceControl is ListBox listBox)
             {

@@ -5,9 +5,18 @@ namespace EisenhowerMatrix
 {
     public partial class AddTaskForm : Form
     {
+        private bool isEditing;
+
         public AddTaskForm()
         {
             InitializeComponent();
+        }
+
+        public AddTaskForm(bool isEditing)
+        {
+            this.isEditing = isEditing;
+            InitializeComponent();
+            Edit(isEditing);
         }
 
         public string TaskTitle { get; private set; }
@@ -42,9 +51,20 @@ namespace EisenhowerMatrix
             }
         }
 
+        private void Edit(bool isEdit)
+        {
+            if (isEdit == true)
+            {
+                this.Text = "Редактирование задач";
+                label1.Text = "Измените задачу:";
+                btn_save.Text = "Сохранить";
+            }
+        }
+
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             Close();
         }
     }
+
 }

@@ -10,11 +10,13 @@ namespace EisenhowerMatrix
     {
         private List<Task> tasks;
         private List<Task> completedTasks;
+        private bool isEditing;
+
         public Form1()
         {
             InitializeComponent();
             tasks = new List<Task>();
-            completedTasks = new List<Task>();
+            completedTasks = LoadCompletedTasks();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -35,8 +37,11 @@ namespace EisenhowerMatrix
 
         private void btn_done_Click(object sender, EventArgs e)
         {
-            DoneTasks doneTasksForm = new DoneTasks();
+            DoneTasks doneTasksForm = new DoneTasks(completedTasks);
             doneTasksForm.ShowDialog();
+            completedTasks = doneTasksForm.CompletedTasks;
+            SaveCompletedTasks();
+            UpdateTasksDisplay();
         }
         private void btn_add_Click(object sender, EventArgs e)
         {
@@ -94,6 +99,19 @@ namespace EisenhowerMatrix
             File.WriteAllText("completedTasks.json", json);
         }
 
+        private List<Task> LoadCompletedTasks()
+        {
+            if (File.Exists("completedTasks.json"))
+            {
+                string json = File.ReadAllText("completedTasks.json");
+                if (!string.IsNullOrEmpty(json))
+                {
+                    return JsonConvert.DeserializeObject<List<Task>>(json) ?? new List<Task>();
+                }
+            }
+            return new List<Task>();
+        }
+
         private void LoadTasksFromJson()
         {
             if (File.Exists("tasks.json"))
@@ -108,19 +126,28 @@ namespace EisenhowerMatrix
 
         private void TaskClick(object sender, EventArgs e)
         {
-            ListBox listBox = (ListBox)sender;
+            ToolStripMenuItem toolStripMenuItem = sender as ToolStripMenuItem;
 
-            if (listBox.SelectedItem != null && listBox.SelectedItem is Task)
+            if (toolStripMenuItem != null)
             {
-                Task clickedTask = (Task)listBox.SelectedItem;
-                clickedTask.IsCompleted = true;
-                completedTasks.Add(clickedTask);
-                tasks.Remove(clickedTask);
-                SaveTasksToJson();
-                SaveCompletedTasks();
-                UpdateTasksDisplay();
+                ContextMenuStrip menu = (ContextMenuStrip)toolStripMenuItem.Owner;
+                Control sourceControl = menu.SourceControl;
+
+                if (sourceControl is ListBox listBox)
+                {
+                    if (listBox.SelectedItem is Task selectedTask)
+                    {
+                        selectedTask.IsCompleted = true;
+                        completedTasks.Add(selectedTask);
+                        tasks.Remove(selectedTask);
+                        SaveTasksToJson();
+                        SaveCompletedTasks();
+                        UpdateTasksDisplay();
+                    }
+                }
             }
         }
+
         #region StripMenuTools
         private void CopyToolStripMenu_Click(object sender, EventArgs e)
         {
@@ -209,21 +236,43 @@ namespace EisenhowerMatrix
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ListBox listBox = (ListBox)sender;
-            //if (listBox.SelectedItem is Task selectedTask)
-            //{
-            //    EditTaskForm editTaskForm = new EditTaskForm(selectedTask);
-            //    if (editTaskForm.ShowDialog() == DialogResult.OK)
-            //    {
-            //        selectedTask.Title = editTaskForm.TaskTitle;
-            //        selectedTask.Priority = editTaskForm.Priority;
-            //        SaveTasksToJson();
-            //        UpdateTasksDisplay();
-            //    }
-            //}
+            if (lsBoxImportantUg.SelectedItem != null)
+            {
+                Task selectedTask = (Task)lsBoxImportantUg.SelectedItem;
+                OpenEditForm(selectedTask);
+            }
+            else if(lsBoxImportantNotUg.SelectedItem != null)
+            {
+                Task selectedTask = (Task)lsBoxImportantNotUg.SelectedItem;
+                OpenEditForm(selectedTask);
+            }
+            else if (lsBoxNotImportUg.SelectedItem != null)
+            {
+                Task selectedTask = (Task)lsBoxNotImportUg.SelectedItem;
+                OpenEditForm(selectedTask);
+            }
+            else if(lsBoxNotImportNotUg.SelectedItem != null)
+            {
+                Task selectedTask = (Task)lsBoxNotImportNotUg.SelectedItem;
+                OpenEditForm(selectedTask);
+            }
         }
 
         #endregion
+        private void OpenEditForm(Task task)
+        {
+            using (AddTaskForm editForm = new AddTaskForm(isEditing))
+            {
+                if (editForm.ShowDialog() == DialogResult.OK)
+                {
+                    task.Title = editForm.TaskTitle;
+                    task.Priority = editForm.Priority;
+                    isEditing = true;
+                    SaveTasksToJson();
+                    UpdateTasksDisplay();
+                }
+            }
+        }
     }
     public class Task
     {

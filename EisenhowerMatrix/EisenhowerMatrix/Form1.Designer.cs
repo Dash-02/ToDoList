@@ -307,7 +307,6 @@
             this.lsBoxImportantNotUg.Name = "lsBoxImportantNotUg";
             this.lsBoxImportantNotUg.Size = new System.Drawing.Size(305, 168);
             this.lsBoxImportantNotUg.TabIndex = 11;
-            this.lsBoxImportantNotUg.Click += new System.EventHandler(this.TaskClick);
             // 
             // lsBoxNotImportUg
             // 
@@ -322,7 +321,6 @@
             this.lsBoxNotImportUg.Name = "lsBoxNotImportUg";
             this.lsBoxNotImportUg.Size = new System.Drawing.Size(304, 168);
             this.lsBoxNotImportUg.TabIndex = 12;
-            this.lsBoxNotImportUg.Click += new System.EventHandler(this.TaskClick);
             // 
             // lsBoxNotImportNotUg
             // 
@@ -337,7 +335,6 @@
             this.lsBoxNotImportNotUg.Name = "lsBoxNotImportNotUg";
             this.lsBoxNotImportNotUg.Size = new System.Drawing.Size(305, 168);
             this.lsBoxNotImportNotUg.TabIndex = 13;
-            this.lsBoxNotImportNotUg.Click += new System.EventHandler(this.TaskClick);
             // 
             // Form1
             // 
