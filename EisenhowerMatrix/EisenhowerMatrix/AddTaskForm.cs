@@ -7,6 +7,8 @@ namespace EisenhowerMatrix
     {
         private bool isEditing;
 
+        public DateTime SelectedDate { get; private set; }
+
         public AddTaskForm()
         {
             InitializeComponent();
@@ -65,6 +67,16 @@ namespace EisenhowerMatrix
         {
             Close();
         }
-    }
 
+        private void btn_selectDate_Click(object sender, EventArgs e)
+        {
+            using (var dateDialog = new DateTask())
+            {
+                if (dateDialog.ShowDialog() == DialogResult.OK)
+                {
+                    SelectedDate = dateDialog.SelectedDate;
+                }
+            }
+        }
+    }
 }

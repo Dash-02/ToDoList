@@ -50,8 +50,6 @@ namespace EisenhowerMatrix
 
         private void SaveCompletedTasks()
         {
-            //string json = JsonConvert.SerializeObject(completedTasks, Formatting.Indented);
-            //File.AppendAllText("completedTasks.json", json);
             label1.Text = $"Выполненные задачи: {completedTasks.Count}";
         }
 
@@ -82,23 +80,22 @@ namespace EisenhowerMatrix
 
         private void DeleteToolStripMenu_Click(object sender, EventArgs e)
         {
-            //if (listBox1.SelectedItem is Task selectedTask)
-            //{
-            //    completedTasks.Remove(selectedTask);
-            //    UpdateCompletedTasks();
-            //    SaveCompletedTasks();
-            //}
-
             ToolStripMenuItem toolStripMenuItem = (ToolStripMenuItem)sender;
             if (toolStripMenuItem.GetCurrentParent() is ContextMenuStrip contextMenuStrip && contextMenuStrip.SourceControl is ListBox listBox)
             {
                 if (listBox.SelectedItem is Task selectedTask)
                 {
-                    completedTasks.Remove(selectedTask);
-                    UpdateCompletedTasks();
-                    SaveCompletedTasks();
+                    DialogResult result = MessageBox.Show("Вы действительно хотите удалить задачу?", "Подтверждение удаления", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        completedTasks.Remove(selectedTask);
+                        UpdateCompletedTasks();
+                        SaveCompletedTasks();
+                    }
                 }
             }
         }
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -11,18 +12,109 @@ namespace EisenhowerMatrix
         private List<Task> tasks;
         private List<Task> completedTasks;
         private bool isEditing;
+        private Task selectedTask;
+        private Point dragStartPoint;
 
         public Form1()
         {
             InitializeComponent();
             tasks = new List<Task>();
             completedTasks = LoadCompletedTasks();
+
+            InitializeListBox(lsBoxImportantUg);
+            InitializeListBox(lsBoxImportantNotUg);
+            InitializeListBox(lsBoxNotImportUg);
+            InitializeListBox(lsBoxNotImportNotUg);
+
+            UpdateTasksDisplay();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadTasksFromJson();
             UpdateTasksDisplay();
         }
+        private void InitializeListBox(ListBox listBox)
+        {
+            listBox.AllowDrop = true;
+            listBox.MouseDown += ListBox_MouseDown;
+            listBox.MouseMove += ListBox_MouseMove;
+            listBox.DragEnter += ListBox_DragEnter;
+            listBox.DragDrop += ListBox_DragDrop;
+        }
+
+        private void ListBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            ListBox listBox = sender as ListBox;
+            if (listBox != null && e.Button == MouseButtons.Left)
+            {
+                int index = listBox.IndexFromPoint(e.Location);
+                if (index >= 0 && index < listBox.Items.Count)
+                {
+                    selectedTask = listBox.Items[index] as Task;
+                    if (selectedTask != null)
+                    {
+                        dragStartPoint = e.Location;
+                        listBox.DoDragDrop(selectedTask, DragDropEffects.Move);
+                    }
+                }
+            }
+        }
+
+        private void ListBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            ListBox listBox = sender as ListBox;
+            if (listBox != null)
+            {
+                int index = listBox.IndexFromPoint(e.Location);
+                if (index >= 0 && index < listBox.Items.Count)
+                {
+                    selectedTask = listBox.Items[index] as Task;
+                }
+            }
+        }
+
+        private void ListBox_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(typeof(Task)))
+            {
+                e.Effect = DragDropEffects.Move;
+            }
+        }
+
+        private void ListBox_DragDrop(object sender, DragEventArgs e)
+        {
+            ListBox listBox = (ListBox)sender;
+            Task task = (Task)e.Data.GetData(typeof(Task));
+            UpdateTaskPriority(task, listBox);
+
+            UpdateTasksDisplay();
+            SaveTasksToJson();
+        }
+
+        private void ListBox_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            DoDragDrop(e.Item, DragDropEffects.Move);
+        }
+
+        private void UpdateTaskPriority(Task task, ListBox listBox)
+        {
+            switch (listBox.Name)
+            {
+                case "lsBoxImportantUg":
+                    task.Priority = "Важно-срочно";
+                    break;
+                case "lsBoxImportantNotUg":
+                    task.Priority = "Важно-не-срочно";
+                    break;
+                case "lsBoxNotImportUg":
+                    task.Priority = "Не-важно-срочно";
+                    break;
+                case "lsBoxNotImportNotUg":
+                    task.Priority = "Не-важно-не-срочно";
+                    break;
+            }
+        }
+
         #region ButtonsMenu
         private void btn_home_Click(object sender, EventArgs e)
         {
@@ -32,7 +124,24 @@ namespace EisenhowerMatrix
         private void btn_date_Click(object sender, EventArgs e)
         {
             DateTask dateTask = new DateTask();
-            dateTask.ShowDialog();
+            if (dateTask.ShowDialog() == DialogResult.OK)
+            {
+                // Получение данных из формы DateTask
+                string selectedDate = dateTask.SelectedDate.ToShortDateString();
+                //string taskDescription = dateTask.TaskDescription;
+
+                // Добавление вашей логики для сохранения задачи на выбранную дату
+                // Например, вы можете создать объект Task и сохранить его в соответствующем списке
+                string taskTitle = dateTask.TaskTitle;
+                string priority = dateTask.Priority;
+                Task newTask = new Task(taskTitle, priority, selectedDate);
+                tasks.Add(newTask);
+
+                // Обновление отображения задач
+                UpdateTasksDisplay();
+                // Сохранение в файл (если требуется)
+                SaveTasksToJson();
+            }
         }
 
         private void btn_done_Click(object sender, EventArgs e)
@@ -48,10 +157,11 @@ namespace EisenhowerMatrix
             AddTaskForm addTaskForm = new AddTaskForm();
             if (addTaskForm.ShowDialog() == DialogResult.OK)
             {
+                string date = addTaskForm.SelectedDate.ToShortDateString();
                 string taskTitle = addTaskForm.TaskTitle;
                 string priority = addTaskForm.Priority;
-
-                Task newTask = new Task(taskTitle, priority);
+                string d = Convert.ToString(date);
+                Task newTask = new Task(taskTitle, priority, d);
                 tasks.Add(newTask);
                 SaveTasksToJson();
                 UpdateTasksDisplay();
@@ -194,7 +304,7 @@ namespace EisenhowerMatrix
                 string clipboardText = Clipboard.GetText();
                 if (!string.IsNullOrEmpty(clipboardText))
                 {
-                    Task newTask = new Task(clipboardText, priority);
+                    Task newTask = new Task(clipboardText, priority, date);
                     tasks.Add(newTask);
                     SaveTasksToJson();
                     UpdateTasksDisplay();
@@ -225,6 +335,8 @@ namespace EisenhowerMatrix
             ToolStripMenuItem toolStripMenuItem = (ToolStripMenuItem)sender;
             if (toolStripMenuItem.GetCurrentParent() is ContextMenuStrip contextMenuStrip && contextMenuStrip.SourceControl is ListBox listBox)
             {
+                DialogResult result = MessageBox.Show("Вы действительно хотите удалить задачу?", "Подтверждение удаления", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
                 if (listBox.SelectedItem is Task selectedTask)
                 {
                     tasks.Remove(selectedTask);
@@ -279,16 +391,20 @@ namespace EisenhowerMatrix
         public string Title { get; set; }
         public string Priority { get; set; }
         public bool IsCompleted { get; set; }
+        public DateTime Date { get; set; }
 
-        public Task(string title, string priority)
+        public Task(string title, string priority, DateTime date)
         {
             Title = title;
             Priority = priority;
+            Date = date;
             IsCompleted = false;
         }
+
         public override string ToString()
         {
-            return Title;
+            return $"{Title} - {Date.ToShortDateString()}";
         }
     }
+
 }

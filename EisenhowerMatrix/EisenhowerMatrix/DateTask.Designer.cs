@@ -33,6 +33,8 @@
             this.btn_menu = new System.Windows.Forms.Button();
             this.btn_home = new System.Windows.Forms.Button();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.textBoxTaskDescription = new System.Windows.Forms.TextBox();
+            this.buttonOK = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,7 +66,6 @@
             this.btn_date.TabIndex = 13;
             this.btn_date.Text = "";
             this.btn_date.UseVisualStyleBackColor = true;
-            this.btn_date.Click += new System.EventHandler(this.btn_date_Click);
             // 
             // btn_menu
             // 
@@ -88,6 +89,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_home.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_home.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_home.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_home.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_home.Font = new System.Drawing.Font("Segoe MDL2 Assets", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_home.ForeColor = System.Drawing.Color.SlateGray;
@@ -106,6 +108,23 @@
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 12;
             // 
+            // textBoxTaskDescription
+            // 
+            this.textBoxTaskDescription.Location = new System.Drawing.Point(358, 38);
+            this.textBoxTaskDescription.Name = "textBoxTaskDescription";
+            this.textBoxTaskDescription.Size = new System.Drawing.Size(244, 22);
+            this.textBoxTaskDescription.TabIndex = 13;
+            // 
+            // buttonOK
+            // 
+            this.buttonOK.Location = new System.Drawing.Point(381, 121);
+            this.buttonOK.Name = "buttonOK";
+            this.buttonOK.Size = new System.Drawing.Size(90, 56);
+            this.buttonOK.TabIndex = 14;
+            this.buttonOK.Text = "OK";
+            this.buttonOK.UseVisualStyleBackColor = true;
+            this.buttonOK.Click += new System.EventHandler(this.btn_ok_Click);
+            // 
             // DateTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -113,6 +132,9 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.CancelButton = this.btn_home;
             this.ClientSize = new System.Drawing.Size(1219, 722);
+            this.ControlBox = false;
+            this.Controls.Add(this.buttonOK);
+            this.Controls.Add(this.textBoxTaskDescription);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.panel1);
             this.Name = "DateTask";
@@ -123,6 +145,7 @@
             this.Text = "Календарь";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -133,5 +156,7 @@
         public System.Windows.Forms.Button btn_menu;
         private System.Windows.Forms.Button btn_home;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.TextBox textBoxTaskDescription;
+        private System.Windows.Forms.Button buttonOK;
     }
 }

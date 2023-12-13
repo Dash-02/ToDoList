@@ -281,6 +281,7 @@
             // 
             // lsBoxImportantUg
             // 
+            this.lsBoxImportantUg.AllowDrop = true;
             this.lsBoxImportantUg.BackColor = System.Drawing.Color.Tan;
             this.lsBoxImportantUg.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lsBoxImportantUg.ContextMenuStrip = this.contextMenuStrip1;
@@ -293,9 +294,14 @@
             this.lsBoxImportantUg.Name = "lsBoxImportantUg";
             this.lsBoxImportantUg.Size = new System.Drawing.Size(304, 168);
             this.lsBoxImportantUg.TabIndex = 10;
+            this.lsBoxImportantUg.DragDrop += new System.Windows.Forms.DragEventHandler(this.ListBox_DragDrop);
+            this.lsBoxImportantUg.DragEnter += new System.Windows.Forms.DragEventHandler(this.ListBox_DragEnter);
+            this.lsBoxImportantUg.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListBox_MouseDown);
+            this.lsBoxImportantUg.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ListBox_MouseMove);
             // 
             // lsBoxImportantNotUg
             // 
+            this.lsBoxImportantNotUg.AllowDrop = true;
             this.lsBoxImportantNotUg.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.lsBoxImportantNotUg.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lsBoxImportantNotUg.ContextMenuStrip = this.contextMenuStrip1;
@@ -307,9 +313,14 @@
             this.lsBoxImportantNotUg.Name = "lsBoxImportantNotUg";
             this.lsBoxImportantNotUg.Size = new System.Drawing.Size(305, 168);
             this.lsBoxImportantNotUg.TabIndex = 11;
+            this.lsBoxImportantNotUg.DragDrop += new System.Windows.Forms.DragEventHandler(this.ListBox_DragDrop);
+            this.lsBoxImportantNotUg.DragEnter += new System.Windows.Forms.DragEventHandler(this.ListBox_DragEnter);
+            this.lsBoxImportantNotUg.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListBox_MouseDown);
+            this.lsBoxImportantNotUg.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ListBox_MouseMove);
             // 
             // lsBoxNotImportUg
             // 
+            this.lsBoxNotImportUg.AllowDrop = true;
             this.lsBoxNotImportUg.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.lsBoxNotImportUg.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lsBoxNotImportUg.ContextMenuStrip = this.contextMenuStrip1;
@@ -321,9 +332,14 @@
             this.lsBoxNotImportUg.Name = "lsBoxNotImportUg";
             this.lsBoxNotImportUg.Size = new System.Drawing.Size(304, 168);
             this.lsBoxNotImportUg.TabIndex = 12;
+            this.lsBoxNotImportUg.DragDrop += new System.Windows.Forms.DragEventHandler(this.ListBox_DragDrop);
+            this.lsBoxNotImportUg.DragEnter += new System.Windows.Forms.DragEventHandler(this.ListBox_DragEnter);
+            this.lsBoxNotImportUg.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListBox_MouseDown);
+            this.lsBoxNotImportUg.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ListBox_MouseMove);
             // 
             // lsBoxNotImportNotUg
             // 
+            this.lsBoxNotImportNotUg.AllowDrop = true;
             this.lsBoxNotImportNotUg.BackColor = System.Drawing.Color.DarkKhaki;
             this.lsBoxNotImportNotUg.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lsBoxNotImportNotUg.ContextMenuStrip = this.contextMenuStrip1;
@@ -335,6 +351,10 @@
             this.lsBoxNotImportNotUg.Name = "lsBoxNotImportNotUg";
             this.lsBoxNotImportNotUg.Size = new System.Drawing.Size(305, 168);
             this.lsBoxNotImportNotUg.TabIndex = 13;
+            this.lsBoxNotImportNotUg.DragDrop += new System.Windows.Forms.DragEventHandler(this.ListBox_DragDrop);
+            this.lsBoxNotImportNotUg.DragEnter += new System.Windows.Forms.DragEventHandler(this.ListBox_DragEnter);
+            this.lsBoxNotImportNotUg.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListBox_MouseDown);
+            this.lsBoxNotImportNotUg.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ListBox_MouseMove);
             // 
             // Form1
             // 
