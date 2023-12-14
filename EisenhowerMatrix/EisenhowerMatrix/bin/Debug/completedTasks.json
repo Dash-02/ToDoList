@@ -2,16 +2,19 @@
   {
     "Title": "222222222222",
     "Priority": "Важно-не-срочно",
-    "IsCompleted": true
+    "IsCompleted": true,
+    "Date": "2023-12-14T18:26:41.3489806+03:00"
   },
   {
     "Title": "11111111111",
     "Priority": "Не-важно-срочно",
-    "IsCompleted": true
+    "IsCompleted": true,
+    "Date": "2023-12-14T18:26:41.3489806+03:00"
   },
   {
-    "Title": "привет",
-    "Priority": "Важно-срочно",
-    "IsCompleted": true
+    "Title": "243424",
+    "Priority": "Не-важно-срочно",
+    "IsCompleted": true,
+    "Date": "2023-12-14T18:26:03.3819036+03:00"
   }
 ]

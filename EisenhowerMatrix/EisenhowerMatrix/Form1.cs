@@ -60,6 +60,7 @@ namespace EisenhowerMatrix
             }
         }
 
+
         private void ListBox_MouseDown(object sender, MouseEventArgs e)
         {
             ListBox listBox = sender as ListBox;
@@ -132,10 +133,10 @@ namespace EisenhowerMatrix
 
                 // Добавление вашей логики для сохранения задачи на выбранную дату
                 // Например, вы можете создать объект Task и сохранить его в соответствующем списке
-                string taskTitle = dateTask.TaskTitle;
-                string priority = dateTask.Priority;
-                Task newTask = new Task(taskTitle, priority, selectedDate);
-                tasks.Add(newTask);
+                //string taskTitle = dateTask.TaskTitle;
+                //string priority = dateTask.Priority;
+                //Task newTask = new Task(taskTitle, priority, selectedDate);
+                //tasks.Add(newTask);
 
                 // Обновление отображения задач
                 UpdateTasksDisplay();
@@ -152,16 +153,16 @@ namespace EisenhowerMatrix
             SaveCompletedTasks();
             UpdateTasksDisplay();
         }
-        private void btn_add_Click(object sender, EventArgs e)
+         private void btn_add_Click(object sender, EventArgs e)
         {
             AddTaskForm addTaskForm = new AddTaskForm();
             if (addTaskForm.ShowDialog() == DialogResult.OK)
             {
-                string date = addTaskForm.SelectedDate.ToShortDateString();
+                DateTime date = addTaskForm.SelectedDate;
                 string taskTitle = addTaskForm.TaskTitle;
                 string priority = addTaskForm.Priority;
-                string d = Convert.ToString(date);
-                Task newTask = new Task(taskTitle, priority, d);
+
+                Task newTask = new Task(taskTitle, priority, date);
                 tasks.Add(newTask);
                 SaveTasksToJson();
                 UpdateTasksDisplay();
@@ -253,6 +254,7 @@ namespace EisenhowerMatrix
                         SaveTasksToJson();
                         SaveCompletedTasks();
                         UpdateTasksDisplay();
+                        DialogResult result = MessageBox.Show("Задача выполнена!", "Выполнение", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
                 }
             }
@@ -279,9 +281,8 @@ namespace EisenhowerMatrix
             ToolStripMenuItem menuItem = (ToolStripMenuItem)sender;
             ContextMenuStrip menu = (ContextMenuStrip)menuItem.Owner;
             Control sourceControl = menu.SourceControl;
-
             string priority = "";
-
+            DateTime date = DateTime.Now;
             if (sourceControl is ListBox listBox)
             {
                 if (listBox.Name == lsBoxImportantUg.Name)
@@ -333,7 +334,7 @@ namespace EisenhowerMatrix
         private void DeleteToolStripMenu_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem toolStripMenuItem = (ToolStripMenuItem)sender;
-            if (toolStripMenuItem.GetCurrentParent() is ContextMenuStrip contextMenuStrip && contextMenuStrip.SourceControl is ListBox listBox)
+            if (toolStripMenuItem.GetCurrentParent() is ContextMenuStrip contextMenuStrip && contextMenuStrip.SourceControl is ListBox listBox && listBox.SelectedItem != null)
             {
                 DialogResult result = MessageBox.Show("Вы действительно хотите удалить задачу?", "Подтверждение удаления", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -373,13 +374,12 @@ namespace EisenhowerMatrix
         #endregion
         private void OpenEditForm(Task task)
         {
-            using (AddTaskForm editForm = new AddTaskForm(isEditing))
+            using (AddTaskForm editForm = new AddTaskForm(true, task.Title, task.Priority))
             {
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {
                     task.Title = editForm.TaskTitle;
                     task.Priority = editForm.Priority;
-                    isEditing = true;
                     SaveTasksToJson();
                     UpdateTasksDisplay();
                 }
@@ -406,5 +406,4 @@ namespace EisenhowerMatrix
             return $"{Title} - {Date.ToShortDateString()}";
         }
     }
-
 }

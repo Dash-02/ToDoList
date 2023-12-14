@@ -38,7 +38,8 @@
             this.radioBtn_notUrgentNotImportant = new System.Windows.Forms.RadioButton();
             this.btn_save = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
-            this.btn_selectDate = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox1
@@ -70,7 +71,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.SlateGray;
-            this.label2.Location = new System.Drawing.Point(253, 190);
+            this.label2.Location = new System.Drawing.Point(253, 184);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(187, 28);
@@ -81,7 +82,7 @@
             // 
             this.radioBtn_urgentImportant.AutoSize = true;
             this.radioBtn_urgentImportant.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.radioBtn_urgentImportant.Location = new System.Drawing.Point(258, 257);
+            this.radioBtn_urgentImportant.Location = new System.Drawing.Point(258, 238);
             this.radioBtn_urgentImportant.Margin = new System.Windows.Forms.Padding(4);
             this.radioBtn_urgentImportant.Name = "radioBtn_urgentImportant";
             this.radioBtn_urgentImportant.Size = new System.Drawing.Size(161, 27);
@@ -94,7 +95,7 @@
             // 
             this.radioBtn_urgentNotImportant.AutoSize = true;
             this.radioBtn_urgentNotImportant.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.radioBtn_urgentNotImportant.Location = new System.Drawing.Point(258, 314);
+            this.radioBtn_urgentNotImportant.Location = new System.Drawing.Point(258, 295);
             this.radioBtn_urgentNotImportant.Margin = new System.Windows.Forms.Padding(4);
             this.radioBtn_urgentNotImportant.Name = "radioBtn_urgentNotImportant";
             this.radioBtn_urgentNotImportant.Size = new System.Drawing.Size(201, 27);
@@ -107,7 +108,7 @@
             // 
             this.radioBtn_notUrgentImportant.AutoSize = true;
             this.radioBtn_notUrgentImportant.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.radioBtn_notUrgentImportant.Location = new System.Drawing.Point(458, 257);
+            this.radioBtn_notUrgentImportant.Location = new System.Drawing.Point(458, 238);
             this.radioBtn_notUrgentImportant.Margin = new System.Windows.Forms.Padding(4);
             this.radioBtn_notUrgentImportant.Name = "radioBtn_notUrgentImportant";
             this.radioBtn_notUrgentImportant.Size = new System.Drawing.Size(199, 27);
@@ -120,7 +121,7 @@
             // 
             this.radioBtn_notUrgentNotImportant.AutoSize = true;
             this.radioBtn_notUrgentNotImportant.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.radioBtn_notUrgentNotImportant.Location = new System.Drawing.Point(458, 314);
+            this.radioBtn_notUrgentNotImportant.Location = new System.Drawing.Point(458, 295);
             this.radioBtn_notUrgentNotImportant.Margin = new System.Windows.Forms.Padding(4);
             this.radioBtn_notUrgentNotImportant.Name = "radioBtn_notUrgentNotImportant";
             this.radioBtn_notUrgentNotImportant.Size = new System.Drawing.Size(211, 27);
@@ -135,7 +136,7 @@
             this.btn_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_save.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_save.ForeColor = System.Drawing.Color.SlateGray;
-            this.btn_save.Location = new System.Drawing.Point(362, 442);
+            this.btn_save.Location = new System.Drawing.Point(373, 432);
             this.btn_save.Margin = new System.Windows.Forms.Padding(4);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(183, 42);
@@ -151,7 +152,7 @@
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cancel.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_cancel.ForeColor = System.Drawing.Color.SlateGray;
-            this.btn_cancel.Location = new System.Drawing.Point(362, 505);
+            this.btn_cancel.Location = new System.Drawing.Point(373, 495);
             this.btn_cancel.Margin = new System.Windows.Forms.Padding(4);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(183, 42);
@@ -160,20 +161,28 @@
             this.btn_cancel.UseVisualStyleBackColor = false;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
-            // btn_selectDate
+            // dateTimePicker1
             // 
-            this.btn_selectDate.BackColor = System.Drawing.Color.Lavender;
-            this.btn_selectDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_selectDate.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_selectDate.ForeColor = System.Drawing.Color.SlateGray;
-            this.btn_selectDate.Location = new System.Drawing.Point(362, 375);
-            this.btn_selectDate.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_selectDate.Name = "btn_selectDate";
-            this.btn_selectDate.Size = new System.Drawing.Size(183, 42);
-            this.btn_selectDate.TabIndex = 10;
-            this.btn_selectDate.Text = "Выбрать дату";
-            this.btn_selectDate.UseVisualStyleBackColor = false;
-            this.btn_selectDate.Click += new System.EventHandler(this.btn_selectDate_Click);
+            this.dateTimePicker1.CalendarForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.Color.WhiteSmoke;
+            this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.Color.SlateGray;
+            this.dateTimePicker1.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.dateTimePicker1.Location = new System.Drawing.Point(426, 346);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(214, 30);
+            this.dateTimePicker1.TabIndex = 11;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.SlateGray;
+            this.label3.Location = new System.Drawing.Point(261, 346);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(158, 28);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Выберите дату:";
             // 
             // AddTaskForm
             // 
@@ -183,7 +192,8 @@
             this.CancelButton = this.btn_cancel;
             this.ClientSize = new System.Drawing.Size(914, 585);
             this.ControlBox = false;
-            this.Controls.Add(this.btn_selectDate);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_save);
             this.Controls.Add(this.radioBtn_notUrgentNotImportant);
@@ -218,6 +228,7 @@
         private System.Windows.Forms.RadioButton radioBtn_notUrgentNotImportant;
         private System.Windows.Forms.Button btn_save;
         private System.Windows.Forms.Button btn_cancel;
-        private System.Windows.Forms.Button btn_selectDate;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label3;
     }
 }

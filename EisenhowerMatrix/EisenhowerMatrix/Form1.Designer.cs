@@ -289,6 +289,7 @@
             this.lsBoxImportantUg.Font = new System.Drawing.Font("Yu Gothic UI", 12F);
             this.lsBoxImportantUg.ForeColor = System.Drawing.Color.White;
             this.lsBoxImportantUg.FormattingEnabled = true;
+            this.lsBoxImportantUg.HorizontalScrollbar = true;
             this.lsBoxImportantUg.ItemHeight = 28;
             this.lsBoxImportantUg.Location = new System.Drawing.Point(229, 95);
             this.lsBoxImportantUg.Name = "lsBoxImportantUg";
@@ -308,6 +309,7 @@
             this.lsBoxImportantNotUg.Font = new System.Drawing.Font("Yu Gothic UI", 12F);
             this.lsBoxImportantNotUg.ForeColor = System.Drawing.Color.White;
             this.lsBoxImportantNotUg.FormattingEnabled = true;
+            this.lsBoxImportantNotUg.HorizontalScrollbar = true;
             this.lsBoxImportantNotUg.ItemHeight = 28;
             this.lsBoxImportantNotUg.Location = new System.Drawing.Point(580, 95);
             this.lsBoxImportantNotUg.Name = "lsBoxImportantNotUg";
@@ -327,6 +329,7 @@
             this.lsBoxNotImportUg.Font = new System.Drawing.Font("Yu Gothic UI", 12F);
             this.lsBoxNotImportUg.ForeColor = System.Drawing.Color.Peru;
             this.lsBoxNotImportUg.FormattingEnabled = true;
+            this.lsBoxNotImportUg.HorizontalScrollbar = true;
             this.lsBoxNotImportUg.ItemHeight = 28;
             this.lsBoxNotImportUg.Location = new System.Drawing.Point(229, 358);
             this.lsBoxNotImportUg.Name = "lsBoxNotImportUg";
@@ -346,6 +349,7 @@
             this.lsBoxNotImportNotUg.Font = new System.Drawing.Font("Yu Gothic UI", 12F);
             this.lsBoxNotImportNotUg.ForeColor = System.Drawing.Color.White;
             this.lsBoxNotImportNotUg.FormattingEnabled = true;
+            this.lsBoxNotImportNotUg.HorizontalScrollbar = true;
             this.lsBoxNotImportNotUg.ItemHeight = 28;
             this.lsBoxNotImportNotUg.Location = new System.Drawing.Point(580, 358);
             this.lsBoxNotImportNotUg.Name = "lsBoxNotImportNotUg";
