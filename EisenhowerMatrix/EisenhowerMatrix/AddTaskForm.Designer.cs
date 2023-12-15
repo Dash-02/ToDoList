@@ -62,7 +62,7 @@
             this.label1.Location = new System.Drawing.Point(367, 38);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(196, 32);
+            this.label1.Size = new System.Drawing.Size(155, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "Введите задачу:";
             // 
@@ -74,7 +74,7 @@
             this.label2.Location = new System.Drawing.Point(253, 184);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(187, 28);
+            this.label2.Size = new System.Drawing.Size(150, 21);
             this.label2.TabIndex = 2;
             this.label2.Text = "Приоритет задачи";
             // 
@@ -85,7 +85,7 @@
             this.radioBtn_urgentImportant.Location = new System.Drawing.Point(258, 238);
             this.radioBtn_urgentImportant.Margin = new System.Windows.Forms.Padding(4);
             this.radioBtn_urgentImportant.Name = "radioBtn_urgentImportant";
-            this.radioBtn_urgentImportant.Size = new System.Drawing.Size(161, 27);
+            this.radioBtn_urgentImportant.Size = new System.Drawing.Size(132, 23);
             this.radioBtn_urgentImportant.TabIndex = 3;
             this.radioBtn_urgentImportant.TabStop = true;
             this.radioBtn_urgentImportant.Text = "Важно и срочно";
@@ -98,7 +98,7 @@
             this.radioBtn_urgentNotImportant.Location = new System.Drawing.Point(258, 295);
             this.radioBtn_urgentNotImportant.Margin = new System.Windows.Forms.Padding(4);
             this.radioBtn_urgentNotImportant.Name = "radioBtn_urgentNotImportant";
-            this.radioBtn_urgentNotImportant.Size = new System.Drawing.Size(201, 27);
+            this.radioBtn_urgentNotImportant.Size = new System.Drawing.Size(164, 23);
             this.radioBtn_urgentNotImportant.TabIndex = 4;
             this.radioBtn_urgentNotImportant.TabStop = true;
             this.radioBtn_urgentNotImportant.Text = "Не важно, но срочно";
@@ -111,7 +111,7 @@
             this.radioBtn_notUrgentImportant.Location = new System.Drawing.Point(458, 238);
             this.radioBtn_notUrgentImportant.Margin = new System.Windows.Forms.Padding(4);
             this.radioBtn_notUrgentImportant.Name = "radioBtn_notUrgentImportant";
-            this.radioBtn_notUrgentImportant.Size = new System.Drawing.Size(199, 27);
+            this.radioBtn_notUrgentImportant.Size = new System.Drawing.Size(162, 23);
             this.radioBtn_notUrgentImportant.TabIndex = 5;
             this.radioBtn_notUrgentImportant.TabStop = true;
             this.radioBtn_notUrgentImportant.Text = "Важно, но не срочно";
@@ -124,7 +124,7 @@
             this.radioBtn_notUrgentNotImportant.Location = new System.Drawing.Point(458, 295);
             this.radioBtn_notUrgentNotImportant.Margin = new System.Windows.Forms.Padding(4);
             this.radioBtn_notUrgentNotImportant.Name = "radioBtn_notUrgentNotImportant";
-            this.radioBtn_notUrgentNotImportant.Size = new System.Drawing.Size(211, 27);
+            this.radioBtn_notUrgentNotImportant.Size = new System.Drawing.Size(172, 23);
             this.radioBtn_notUrgentNotImportant.TabIndex = 6;
             this.radioBtn_notUrgentNotImportant.TabStop = true;
             this.radioBtn_notUrgentNotImportant.Text = "Не важно и не срочно";
@@ -169,8 +169,9 @@
             this.dateTimePicker1.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.dateTimePicker1.Location = new System.Drawing.Point(426, 346);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(214, 30);
+            this.dateTimePicker1.Size = new System.Drawing.Size(214, 25);
             this.dateTimePicker1.TabIndex = 11;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.DateTimePicker1_ValueChanged);
             // 
             // label3
             // 
@@ -180,14 +181,14 @@
             this.label3.Location = new System.Drawing.Point(261, 346);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(158, 28);
+            this.label3.Size = new System.Drawing.Size(126, 21);
             this.label3.TabIndex = 12;
             this.label3.Text = "Выберите дату:";
             // 
             // AddTaskForm
             // 
             this.AcceptButton = this.btn_save;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btn_cancel;
             this.ClientSize = new System.Drawing.Size(914, 585);

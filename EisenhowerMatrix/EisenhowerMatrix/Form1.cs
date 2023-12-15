@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace EisenhowerMatrix
 {
@@ -14,6 +16,8 @@ namespace EisenhowerMatrix
         private bool isEditing;
         private Task selectedTask;
         private Point dragStartPoint;
+        int indexToMove;
+        private ListBox currentListBox;
 
         public Form1()
         {
@@ -36,66 +40,272 @@ namespace EisenhowerMatrix
         private void InitializeListBox(ListBox listBox)
         {
             listBox.AllowDrop = true;
-            listBox.MouseDown += ListBox_MouseDown;
-            listBox.MouseMove += ListBox_MouseMove;
-            listBox.DragEnter += ListBox_DragEnter;
-            listBox.DragDrop += ListBox_DragDrop;
+
+            //listBox.MouseMove += new MouseEventHandler(ListBox_MouseMove);
+            //listBox.DragEnter += new DragEventHandler(ListBox_DragEnter);
+            //listBox.DragDrop += new DragEventHandler(ListBox_DragDrop);
+            //listBox.MouseDown += ListBox_MouseDown;
+            //listBox.DragOver += ListBox_DragOver;
+            ////DateTime date = selectedTask.Date;
+            //DateTime date = DateTime.Now;
+
+            //for (int i = 0; i < listBox.Items.Count; i++)
+            //{
+            //    listBox.Items.Add(new Task($"Task {i}", $"Priority {i}", date));
+            //}
         }
-
-        private void ListBox_MouseMove(object sender, MouseEventArgs e)
-        {
-            ListBox listBox = sender as ListBox;
-            if (listBox != null && e.Button == MouseButtons.Left)
-            {
-                int index = listBox.IndexFromPoint(e.Location);
-                if (index >= 0 && index < listBox.Items.Count)
-                {
-                    selectedTask = listBox.Items[index] as Task;
-                    if (selectedTask != null)
-                    {
-                        dragStartPoint = e.Location;
-                        listBox.DoDragDrop(selectedTask, DragDropEffects.Move);
-                    }
-                }
-            }
-        }
-
-
         private void ListBox_MouseDown(object sender, MouseEventArgs e)
         {
             ListBox listBox = sender as ListBox;
-            if (listBox != null)
+            if (e.Button == MouseButtons.Left)
             {
-                int index = listBox.IndexFromPoint(e.Location);
-                if (index >= 0 && index < listBox.Items.Count)
+                selectedTask = listBox.SelectedItem as Task;
+                if (selectedTask != null)
                 {
-                    selectedTask = listBox.Items[index] as Task;
+                    dragStartPoint = e.Location;
+                    listBox.DoDragDrop(selectedTask, DragDropEffects.Move | DragDropEffects.Copy);
+                    currentListBox = listBox;
                 }
             }
         }
-
-        private void ListBox_DragEnter(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(typeof(Task)))
-            {
-                e.Effect = DragDropEffects.Move;
-            }
-        }
-
         private void ListBox_DragDrop(object sender, DragEventArgs e)
         {
-            ListBox listBox = (ListBox)sender;
-            Task task = (Task)e.Data.GetData(typeof(Task));
-            UpdateTaskPriority(task, listBox);
+            ListBox listBox = sender as ListBox;
+            Task droppedTask = e.Data.GetData(typeof(Task)) as Task;
 
-            UpdateTasksDisplay();
-            SaveTasksToJson();
+            if (droppedTask != null && currentListBox != null)
+            {
+                int newIndex = listBox.IndexFromPoint(listBox.PointToClient(new Point(e.X, e.Y)));
+
+                if (currentListBox == listBox)
+                {
+                    currentListBox.Items.Remove(droppedTask);
+                }
+
+                if (newIndex == -1)
+                {
+                    listBox.Items.Add(droppedTask);
+                }
+                else
+                {
+                    listBox.Items.Insert(newIndex, droppedTask);
+                }
+
+                UpdateTaskPriority(droppedTask, listBox);
+                UpdateTasksDisplay();
+            }
+
+            currentListBox = null;
         }
 
-        private void ListBox_ItemDrag(object sender, ItemDragEventArgs e)
-        {
-            DoDragDrop(e.Item, DragDropEffects.Move);
-        }
+        //private void ListBox_MouseDown(object sender, MouseEventArgs e)
+        //{
+        //    ListBox listBox = sender as ListBox;
+        //    if (e.Button == MouseButtons.Left)
+        //    {
+        //        selectedTask = listBox.SelectedItem as Task;
+        //        if (selectedTask != null)
+        //        {
+        //            dragStartPoint = e.Location;
+        //            listBox.DoDragDrop(selectedTask, DragDropEffects.Move);
+        //            currentListBox = listBox;
+        //        }
+        //    }
+        //}
+
+        //private void ListBox_DragOver(object sender, DragEventArgs e)
+        //{
+
+        //}
+
+        //private void ListBox_MouseMove(object sender, MouseEventArgs e)
+        //{
+
+        //}
+
+        //private void ListBox_DragDrop(object sender, DragEventArgs e)
+        //{
+        //    ListBox listBox = sender as ListBox;
+        //    Task droppedTask = e.Data.GetData(typeof(Task)) as Task;
+
+        //    if (droppedTask != null && currentListBox != null)
+        //    {
+        //        int newIndex = listBox.IndexFromPoint(listBox.PointToClient(new Point(e.X, e.Y)));
+
+        //        currentListBox.Items.Remove(droppedTask);
+
+        //        if (newIndex == -1)
+        //        {
+        //            listBox.Items.Add(droppedTask);
+        //        }
+        //        else
+        //        {
+        //            listBox.Items.Insert(newIndex, droppedTask);
+        //        }
+
+        //        UpdateTaskPriority(droppedTask, listBox);
+        //        UpdateTasksDisplay();
+        //    }
+
+        //    currentListBox = null; // Reset current ListBox after dropping
+        //}
+
+
+        //-------------------------------------------------------------
+        // Обработчик события для начала перетаскивания элемента
+        //private void ListBox_MouseDown(object sender, MouseEventArgs e)
+        //{
+        //    ListBox listBox = sender as ListBox;
+        //    if (listBox.SelectedItem != null)
+        //    {
+        //        listBox.DoDragDrop(listBox.SelectedItem, DragDropEffects.Move);
+        //    }
+        //}
+
+        //// Обработчик события для завершения перетаскивания элемента
+        //private void ListBox_DragDrop(object sender, DragEventArgs e)
+        //{
+        //    ListBox listBox = sender as ListBox;
+        //    if (e.Data.GetDataPresent(typeof(string)))
+        //    {
+        //        int index = listBox.IndexFromPoint(listBox.PointToClient(new Point(e.X, e.Y)));
+        //        if(index != -1)
+        //        {
+        //            string data = (string)e.Data.GetData(typeof(string));
+        //            listBox.Items.Remove(data);
+        //            listBox.Items.Insert(index, data);
+        //        }
+        //    }
+        //}
+
+        //// Обработчик события для разрешения перетаскивания
+        //private void ListBox_DragEnter(object sender, DragEventArgs e)
+        //{
+        //    if (e.Data.GetDataPresent(typeof(string)))
+        //    {
+        //        e.Effect = DragDropEffects.Move;
+        //    }
+        //}
+
+        // Обработчик события для начала перетаскивания элемента
+        //private void ListBox_MouseDown(object sender, MouseEventArgs e)
+        //{
+        //    ListBox listBox = sender as ListBox;
+        //    if (listBox.SelectedItem != null)
+        //    {
+        //        listBox.DoDragDrop(listBox.SelectedItem, DragDropEffects.Move);
+        //    }
+        //}
+
+        //// Обработчик события для завершения перетаскивания элемента
+        //private void ListBox_DragDrop(object sender, DragEventArgs e)
+        //{
+        //    ListBox listBox = sender as ListBox;
+        //    int index = listBox.IndexFromPoint(listBox.PointToClient(new Point(e.X, e.Y)));
+        //    if(index != -1)
+        //    {
+        //        Object data = e.Data.GetData(typeof(string));
+        //        listBox.Items.Remove(data);
+        //        listBox.Items.Insert(index, data);
+        //    }
+        //}
+
+        //// Обработчик события для разрешения перетаскивания
+        //private void ListBox_DragEnter(object sender, DragEventArgs e)
+        //{
+        //    e.Effect = DragDropEffects.Move;
+        //}
+
+
+        //=--------------------------------------=
+
+        //private void ListBox_MouseMove(object sender, MouseEventArgs e)
+        //{
+        //    ListBox listBox = sender as ListBox;
+        //    if (listBox != null && e.Button == MouseButtons.Left)
+        //    {
+        //        int index = listBox.IndexFromPoint(e.Location);
+        //        if (index >= 0 && index < listBox.Items.Count)
+        //        {
+        //            selectedTask = listBox.Items[index] as Task;
+        //            if (selectedTask != null)
+        //            {
+        //                dragStartPoint = e.Location;
+        //                listBox.DoDragDrop(selectedTask, DragDropEffects.Move);
+        //            }
+        //        }
+        //    }
+        //}
+
+        //private void ListBox_MouseDown(object sender, MouseEventArgs e)
+        //{
+        //    ListBox listBox = sender as ListBox;
+        //    if (listBox != null)
+        //    {
+        //        int index = listBox.IndexFromPoint(e.Location);
+        //        if (index >= 0 && index < listBox.Items.Count)
+        //        {
+        //            selectedTask = listBox.Items[index] as Task;
+        //        }
+        //    }
+        //    //ToolStripMenuItem menuItem = (ToolStripMenuItem)sender;
+        //    //ContextMenuStrip menu = (ContextMenuStrip)menuItem.Owner;
+        //    //Control sourceControl = menu.SourceControl;
+        //    //string priority = "";
+        //    //DateTime date = DateTime.Now;
+
+        //    //string clipboardText = Clipboard.GetText();
+        //    //if (!string.IsNullOrEmpty(clipboardText))
+        //    //{
+        //    //    Task newTask = new Task(clipboardText, priority, date);
+        //    //    tasks.Add(newTask);
+        //    //}
+        //}
+
+        //private void ListBox_DragEnter(object sender, DragEventArgs e)
+        //{
+        //    if (e.Data.GetDataPresent(typeof(Task)))
+        //    {
+        //        e.Effect = DragDropEffects.Move;
+        //    }
+        //}
+
+        //private void ListBox_DragDrop(object sender, DragEventArgs e)
+        //{
+        //    ListBox listBox = (ListBox)sender;
+        //    Task task = (Task)e.Data.GetData(typeof(Task));
+        //    UpdateTaskPriority(task, listBox);
+
+        //    //int insertIndex = listBox.IndexFromPoint(listBox.PointToClient(new Point(e.X, e.Y)));
+
+        //    //if (insertIndex == -1)
+        //    //{
+        //    //    listBox.Items.Add(task);
+        //    //}
+        //    //else 
+        //    //{
+        //    //    listBox.Items.Insert(insertIndex, task);
+        //    //}
+
+        //    //ListBox sourceListBox = (ListBox)e.Data.GetData(typeof(ListBox));
+
+        //    //if (sourceListBox.Items.Contains(task))
+        //    //{
+        //    //    sourceListBox.Items.Remove(task);
+        //    //}
+
+        //    tasks.Remove(selectedTask);
+        //    Clipboard.SetText(selectedTask.Title);
+
+
+        //    UpdateTasksDisplay();
+        //    SaveTasksToJson();
+        //}
+
+        //private void ListBox_ItemDrag(object sender, ItemDragEventArgs e)
+        //{
+        //    DoDragDrop(e.Item, DragDropEffects.Move);
+        //}
 
         private void UpdateTaskPriority(Task task, ListBox listBox)
         {
@@ -122,25 +332,14 @@ namespace EisenhowerMatrix
             UpdateTasksDisplay();
         }
 
-        private void btn_date_Click(object sender, EventArgs e)
+        private void btn_date_Click(object sender, EventArgs e) // e,hfnm
         {
             DateTask dateTask = new DateTask();
             if (dateTask.ShowDialog() == DialogResult.OK)
             {
-                // Получение данных из формы DateTask
                 string selectedDate = dateTask.SelectedDate.ToShortDateString();
-                //string taskDescription = dateTask.TaskDescription;
-
-                // Добавление вашей логики для сохранения задачи на выбранную дату
-                // Например, вы можете создать объект Task и сохранить его в соответствующем списке
-                //string taskTitle = dateTask.TaskTitle;
-                //string priority = dateTask.Priority;
-                //Task newTask = new Task(taskTitle, priority, selectedDate);
-                //tasks.Add(newTask);
-
-                // Обновление отображения задач
+                
                 UpdateTasksDisplay();
-                // Сохранение в файл (если требуется)
                 SaveTasksToJson();
             }
         }
@@ -282,7 +481,7 @@ namespace EisenhowerMatrix
             ContextMenuStrip menu = (ContextMenuStrip)menuItem.Owner;
             Control sourceControl = menu.SourceControl;
             string priority = "";
-            DateTime date = DateTime.Now;
+            DateTime date = selectedTask.Date;
             if (sourceControl is ListBox listBox)
             {
                 if (listBox.Name == lsBoxImportantUg.Name)
@@ -374,12 +573,13 @@ namespace EisenhowerMatrix
         #endregion
         private void OpenEditForm(Task task)
         {
-            using (AddTaskForm editForm = new AddTaskForm(true, task.Title, task.Priority))
+            using (AddTaskForm editForm = new AddTaskForm(true, task.Title, task.Priority, task.Date))
             {
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {
                     task.Title = editForm.TaskTitle;
                     task.Priority = editForm.Priority;
+                    task.Date = editForm.TaskDate;
                     SaveTasksToJson();
                     UpdateTasksDisplay();
                 }

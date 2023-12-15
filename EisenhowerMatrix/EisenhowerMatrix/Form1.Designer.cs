@@ -45,7 +45,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_done = new System.Windows.Forms.Button();
             this.btn_add_task = new System.Windows.Forms.Button();
-            this.btn_date = new System.Windows.Forms.Button();
             this.btn_menu = new System.Windows.Forms.Button();
             this.btn_home = new System.Windows.Forms.Button();
             this.lsBoxImportantUg = new System.Windows.Forms.ListBox();
@@ -182,7 +181,6 @@
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel1.Controls.Add(this.btn_done);
             this.panel1.Controls.Add(this.btn_add_task);
-            this.panel1.Controls.Add(this.btn_date);
             this.panel1.Controls.Add(this.btn_menu);
             this.panel1.Controls.Add(this.btn_home);
             this.panel1.Location = new System.Drawing.Point(0, -1);
@@ -200,7 +198,7 @@
             this.btn_done.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_done.Font = new System.Drawing.Font("Segoe MDL2 Assets", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_done.ForeColor = System.Drawing.Color.SlateGray;
-            this.btn_done.Location = new System.Drawing.Point(-4, 216);
+            this.btn_done.Location = new System.Drawing.Point(-4, 162);
             this.btn_done.Margin = new System.Windows.Forms.Padding(0);
             this.btn_done.Name = "btn_done";
             this.btn_done.Size = new System.Drawing.Size(62, 55);
@@ -218,7 +216,7 @@
             this.btn_add_task.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_add_task.Font = new System.Drawing.Font("Segoe MDL2 Assets", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_add_task.ForeColor = System.Drawing.Color.SlateGray;
-            this.btn_add_task.Location = new System.Drawing.Point(-4, 162);
+            this.btn_add_task.Location = new System.Drawing.Point(-4, 108);
             this.btn_add_task.Margin = new System.Windows.Forms.Padding(0);
             this.btn_add_task.Name = "btn_add_task";
             this.btn_add_task.Size = new System.Drawing.Size(62, 55);
@@ -226,24 +224,6 @@
             this.btn_add_task.Text = "";
             this.btn_add_task.UseVisualStyleBackColor = true;
             this.btn_add_task.Click += new System.EventHandler(this.btn_add_Click);
-            // 
-            // btn_date
-            // 
-            this.btn_date.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_date.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_date.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_date.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_date.Font = new System.Drawing.Font("Segoe MDL2 Assets", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_date.ForeColor = System.Drawing.Color.SlateGray;
-            this.btn_date.Location = new System.Drawing.Point(-4, 108);
-            this.btn_date.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_date.Name = "btn_date";
-            this.btn_date.Size = new System.Drawing.Size(62, 55);
-            this.btn_date.TabIndex = 11;
-            this.btn_date.Text = "";
-            this.btn_date.UseVisualStyleBackColor = true;
-            this.btn_date.Click += new System.EventHandler(this.btn_date_Click);
             // 
             // btn_menu
             // 
@@ -296,9 +276,7 @@
             this.lsBoxImportantUg.Size = new System.Drawing.Size(304, 168);
             this.lsBoxImportantUg.TabIndex = 10;
             this.lsBoxImportantUg.DragDrop += new System.Windows.Forms.DragEventHandler(this.ListBox_DragDrop);
-            this.lsBoxImportantUg.DragEnter += new System.Windows.Forms.DragEventHandler(this.ListBox_DragEnter);
             this.lsBoxImportantUg.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListBox_MouseDown);
-            this.lsBoxImportantUg.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ListBox_MouseMove);
             // 
             // lsBoxImportantNotUg
             // 
@@ -316,9 +294,7 @@
             this.lsBoxImportantNotUg.Size = new System.Drawing.Size(305, 168);
             this.lsBoxImportantNotUg.TabIndex = 11;
             this.lsBoxImportantNotUg.DragDrop += new System.Windows.Forms.DragEventHandler(this.ListBox_DragDrop);
-            this.lsBoxImportantNotUg.DragEnter += new System.Windows.Forms.DragEventHandler(this.ListBox_DragEnter);
             this.lsBoxImportantNotUg.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListBox_MouseDown);
-            this.lsBoxImportantNotUg.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ListBox_MouseMove);
             // 
             // lsBoxNotImportUg
             // 
@@ -336,9 +312,7 @@
             this.lsBoxNotImportUg.Size = new System.Drawing.Size(304, 168);
             this.lsBoxNotImportUg.TabIndex = 12;
             this.lsBoxNotImportUg.DragDrop += new System.Windows.Forms.DragEventHandler(this.ListBox_DragDrop);
-            this.lsBoxNotImportUg.DragEnter += new System.Windows.Forms.DragEventHandler(this.ListBox_DragEnter);
             this.lsBoxNotImportUg.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListBox_MouseDown);
-            this.lsBoxNotImportUg.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ListBox_MouseMove);
             // 
             // lsBoxNotImportNotUg
             // 
@@ -356,9 +330,7 @@
             this.lsBoxNotImportNotUg.Size = new System.Drawing.Size(305, 168);
             this.lsBoxNotImportNotUg.TabIndex = 13;
             this.lsBoxNotImportNotUg.DragDrop += new System.Windows.Forms.DragEventHandler(this.ListBox_DragDrop);
-            this.lsBoxNotImportNotUg.DragEnter += new System.Windows.Forms.DragEventHandler(this.ListBox_DragEnter);
             this.lsBoxNotImportNotUg.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListBox_MouseDown);
-            this.lsBoxNotImportNotUg.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ListBox_MouseMove);
             // 
             // Form1
             // 
@@ -400,7 +372,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btn_home;
         public System.Windows.Forms.Button btn_menu;
-        private System.Windows.Forms.Button btn_date;
         private System.Windows.Forms.Button btn_add_task;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem CopyToolStripMenu;

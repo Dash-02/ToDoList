@@ -15,15 +15,16 @@ namespace EisenhowerMatrix
             SelectedDate = DateTime.Now;
         }
 
-        public AddTaskForm(bool isEditing, string taskTitle, string priority)
+        public AddTaskForm(bool isEditing, string taskTitle, string priority, DateTime date)
         {
             this.isEditing = isEditing;
             InitializeComponent();
-            Edit(isEditing, taskTitle, priority);
+            Edit(isEditing, taskTitle, priority, date);
         }
 
         public string TaskTitle { get; private set; }
         public string Priority { get; private set; }
+        public object Date { get; }
 
         private void btn_add_Click(object sender, EventArgs e)
         {
@@ -54,7 +55,7 @@ namespace EisenhowerMatrix
             }
         }
 
-        private void Edit(bool isEdit, string taskTitle, string priority)
+        private void Edit(bool isEdit, string taskTitle, string priority, DateTime date)
         {
             if (isEdit == true)
             {
@@ -63,6 +64,7 @@ namespace EisenhowerMatrix
                 btn_save.Text = "Сохранить";
                 label3.Text = "Изменить дату:";
                 textBox1.Text = taskTitle;
+                dateTimePicker1.Value = date;
 
                 switch (priority)
                 {
@@ -79,7 +81,8 @@ namespace EisenhowerMatrix
                         radioBtn_notUrgentNotImportant.Checked = true;
                         break;
                 }
-                TaskDate = SelectedDate;
+                TaskDate = dateTimePicker1.Value;
+
             }
         }
 
@@ -91,6 +94,7 @@ namespace EisenhowerMatrix
         private void DateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             TaskDate = dateTimePicker1.Value;
+            SelectedDate = TaskDate;
         }
     }
 }
