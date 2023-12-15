@@ -275,7 +275,6 @@
             this.lsBoxImportantUg.Name = "lsBoxImportantUg";
             this.lsBoxImportantUg.Size = new System.Drawing.Size(304, 168);
             this.lsBoxImportantUg.TabIndex = 10;
-            this.lsBoxImportantUg.DragDrop += new System.Windows.Forms.DragEventHandler(this.ListBox_DragDrop);
             this.lsBoxImportantUg.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListBox_MouseDown);
             // 
             // lsBoxImportantNotUg
@@ -293,7 +292,6 @@
             this.lsBoxImportantNotUg.Name = "lsBoxImportantNotUg";
             this.lsBoxImportantNotUg.Size = new System.Drawing.Size(305, 168);
             this.lsBoxImportantNotUg.TabIndex = 11;
-            this.lsBoxImportantNotUg.DragDrop += new System.Windows.Forms.DragEventHandler(this.ListBox_DragDrop);
             this.lsBoxImportantNotUg.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListBox_MouseDown);
             // 
             // lsBoxNotImportUg
@@ -311,7 +309,6 @@
             this.lsBoxNotImportUg.Name = "lsBoxNotImportUg";
             this.lsBoxNotImportUg.Size = new System.Drawing.Size(304, 168);
             this.lsBoxNotImportUg.TabIndex = 12;
-            this.lsBoxNotImportUg.DragDrop += new System.Windows.Forms.DragEventHandler(this.ListBox_DragDrop);
             this.lsBoxNotImportUg.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListBox_MouseDown);
             // 
             // lsBoxNotImportNotUg
@@ -329,7 +326,6 @@
             this.lsBoxNotImportNotUg.Name = "lsBoxNotImportNotUg";
             this.lsBoxNotImportNotUg.Size = new System.Drawing.Size(305, 168);
             this.lsBoxNotImportNotUg.TabIndex = 13;
-            this.lsBoxNotImportNotUg.DragDrop += new System.Windows.Forms.DragEventHandler(this.ListBox_DragDrop);
             this.lsBoxNotImportNotUg.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListBox_MouseDown);
             // 
             // Form1

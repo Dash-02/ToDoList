@@ -1,93 +1,9 @@
 [
   {
-    "Title": "1",
-    "Priority": "Важно-срочно",
-    "IsCompleted": false,
-    "Date": "2023-12-15T19:09:19.3415606+03:00"
-  },
-  {
-    "Title": "2",
-    "Priority": "Важно-не-срочно",
-    "IsCompleted": false,
-    "Date": "2023-12-08T19:09:22"
-  },
-  {
-    "Title": "3",
-    "Priority": "Не-важно-срочно",
-    "IsCompleted": false,
-    "Date": "2023-12-31T19:09:28"
-  },
-  {
-    "Title": "4",
-    "Priority": "Не-важно-не-срочно",
-    "IsCompleted": false,
-    "Date": "2023-12-24T19:09:34"
-  },
-  {
-    "Title": "12",
-    "Priority": "Важно-срочно",
-    "IsCompleted": false,
-    "Date": "2023-12-15T19:09:47.5052129+03:00"
-  },
-  {
-    "Title": "23",
-    "Priority": "Важно-не-срочно",
-    "IsCompleted": false,
-    "Date": "2023-12-10T19:09:51"
-  },
-  {
-    "Title": "34",
-    "Priority": "Не-важно-срочно",
-    "IsCompleted": false,
-    "Date": "2023-12-16T19:09:56"
-  },
-  {
-    "Title": "12",
-    "Priority": "Важно-срочно",
-    "IsCompleted": false,
-    "Date": "2023-12-15T19:09:47.5052129+03:00"
-  },
-  {
-    "Title": "12",
-    "Priority": "Не-важно-срочно",
-    "IsCompleted": false,
-    "Date": "2023-12-15T19:09:47.5052129+03:00"
-  },
-  {
-    "Title": "432342",
-    "Priority": "Не-важно-срочно",
-    "IsCompleted": false,
-    "Date": "2023-12-10T19:09:51"
-  },
-  {
-    "Title": "432342",
-    "Priority": "Не-важно-не-срочно",
-    "IsCompleted": false,
-    "Date": "2023-12-10T19:09:51"
-  },
-  {
-    "Title": "432342",
-    "Priority": "Не-важно-не-срочно",
-    "IsCompleted": false,
-    "Date": "2023-12-10T19:09:51"
-  },
-  {
-    "Title": "432342",
-    "Priority": "Важно-не-срочно",
-    "IsCompleted": false,
-    "Date": "2023-12-10T19:09:51"
-  },
-  {
     "Title": "Задача 1",
     "Priority": "Важно-срочно",
     "IsCompleted": false,
     "Date": "2023-12-15T20:41:16.00933+03:00"
-  },
-  {
-    "Title": "Задача 2",
-    "Priority": "Важно-не-срочно",
-    "IsCompleted": false,
-    "Date": "2023-12-16T20:41:30"
   },
   {
     "Title": "Задача 3",
@@ -100,5 +16,11 @@
     "Priority": "Не-важно-не-срочно",
     "IsCompleted": false,
     "Date": "2023-12-18T20:41:53"
+  },
+  {
+    "Title": "Задача 2",
+    "Priority": "Важно-не-срочно",
+    "IsCompleted": false,
+    "Date": "2023-12-20T23:08:53"
   }
 ]
