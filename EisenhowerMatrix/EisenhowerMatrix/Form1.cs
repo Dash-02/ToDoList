@@ -1,192 +1,317 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace EisenhowerMatrix
 {
     public partial class Form1 : Form
     {
         private List<Task> tasks;
+        private List<Task> completedTasks;
+        private bool isEditing;
+        private Task selectedTask;
+        private Point dragStartPoint;
+        int indexToMove;
+        private ListBox currentListBox;
+
         public Form1()
         {
             InitializeComponent();
             tasks = new List<Task>();
+            completedTasks = LoadCompletedTasks();
+
+            UpdateTasksDisplay();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            boxImportantUg.SetInnerMargins(10, 8, 8, 8);
-            boxImportantNotUg.SetInnerMargins(10, 8, 8, 8);
-            boxNotImportUg.SetInnerMargins(10, 8, 8, 8);
-            boxNotImportNotUg.SetInnerMargins(10, 8, 8, 8);
-
-            if (File.Exists("tasks.json"))
+            LoadTasksFromJson();
+            UpdateTasksDisplay();
+        }
+        
+        private void ListBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            ListBox listBox = sender as ListBox;
+            if (e.Button == MouseButtons.Left)
             {
-                string json = File.ReadAllText("tasks.json");
-                tasks = JsonConvert.DeserializeObject<List<Task>>(json);
-            }
-            else
-            {
-                tasks = new List<Task>();
+                selectedTask = listBox.SelectedItem as Task;
+                if (selectedTask != null)
+                {
+                    dragStartPoint = e.Location;
+                    listBox.DoDragDrop(selectedTask, DragDropEffects.Move | DragDropEffects.Copy);
+                    currentListBox = listBox;
+                }
             }
         }
-
+        
+        #region ButtonsMenu
         private void btn_home_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void btn_date_Click(object sender, EventArgs e)
-        {
-
+            UpdateTasksDisplay();
         }
 
         private void btn_done_Click(object sender, EventArgs e)
         {
-            DoneTasks DoneTasks = new DoneTasks();
+            DoneTasks doneTasksForm = new DoneTasks(completedTasks);
+            doneTasksForm.ShowDialog();
+            completedTasks = doneTasksForm.CompletedTasks;
+            SaveCompletedTasks();
+            UpdateTasksDisplay();
         }
-        //    private void btn_add_Click(object sender, EventArgs e)
-        //    {
-        //        AddTaskForm addTaskForm = new AddTaskForm();
-        //        if (addTaskForm.ShowDialog() == DialogResult.OK)
-        //        {
-        //            string taskTitle = addTaskForm.TaskTitle;
-        //            string priority = addTaskForm.Priority;
-
-        //            Task newTask = new Task(taskTitle, priority);
-        //            tasks.Add(newTask);
-        //            SaveTasksToJson();
-        //            UpdateTasksDisplay();
-        //        }
-        //    }
-        //    private void SaveTasksToJson()
-        //    {
-        //        string json = JsonConvert.SerializeObject(tasks);
-        //        File.WriteAllText("tasks.json", json);
-        //    }
-        //    private void UpdateTasksDisplay()
-        //    {
-        //        boxImportantUg.Clear();
-        //        boxImportantNotUg.Clear();
-        //        boxNotImportUg.Clear();
-        //        boxNotImportNotUg.Clear();
-
-        //        foreach (Task task in tasks)
-        //        {
-        //            if (task.Priority == "Важно-срочно")
-        //            {
-        //                boxImportantUg.AppendText(task.Title + Environment.NewLine);
-        //            }
-        //            else if (task.Priority == "Важно-не-срочно")
-        //            {
-        //                boxImportantNotUg.AppendText(task.Title + Environment.NewLine);
-        //            }
-        //            else if (task.Priority == "Не-важно-срочно")
-        //            {
-        //                boxNotImportUg.AppendText(task.Title + Environment.NewLine);
-        //            }
-        //            else if (task.Priority == "Не-важно-не-срочно")
-        //            {
-        //                boxNotImportNotUg.AppendText(task.Title + Environment.NewLine);
-        //            }
-        //        }
-        //    }
-        //}
-        private void btn_add_Click(object sender, EventArgs e)
+         private void btn_add_Click(object sender, EventArgs e)
         {
             AddTaskForm addTaskForm = new AddTaskForm();
             if (addTaskForm.ShowDialog() == DialogResult.OK)
             {
+                DateTime date = addTaskForm.SelectedDate;
                 string taskTitle = addTaskForm.TaskTitle;
                 string priority = addTaskForm.Priority;
 
-                Task newTask = new Task(taskTitle, priority);
+                Task newTask = new Task(taskTitle, priority, date);
                 tasks.Add(newTask);
                 SaveTasksToJson();
                 UpdateTasksDisplay();
             }
         }
+        #endregion
+        
+        private void UpdateTasksDisplay()
+        {
+            lsBoxImportantUg.Items.Clear();
+            lsBoxImportantNotUg.Items.Clear();
+            lsBoxNotImportUg.Items.Clear();
+            lsBoxNotImportNotUg.Items.Clear();
 
+
+            foreach (Task task in tasks)
+            {
+                switch (task.Priority)
+                {
+                    case "Важно-срочно":
+                        lsBoxImportantUg.Items.Add(task);
+                        break;
+                    case "Важно-не-срочно":
+                        lsBoxImportantNotUg.Items.Add(task);
+                        break;
+                    case "Не-важно-срочно":
+                        lsBoxNotImportUg.Items.Add(task);
+                        break;
+                    case "Не-важно-не-срочно":
+                        lsBoxNotImportNotUg.Items.Add(task);
+                        break;
+                }
+            }
+            label5.Text = $"Всего задач: {tasks.Count}";
+        }
         private void SaveTasksToJson()
         {
-            List<Task> allTasks;
-            if (File.Exists("tasks.json"))
-            {
-                string json = File.ReadAllText("tasks.json");
-                allTasks = JsonConvert.DeserializeObject<List<Task>>(json);
-            }
-            else
-            {
-                allTasks = new List<Task>();
-            }
-
-            allTasks.AddRange(tasks);
-            string updatedJson = JsonConvert.SerializeObject(allTasks);
-            File.WriteAllText("tasks.json", updatedJson);
+            string json = JsonConvert.SerializeObject(tasks, Formatting.Indented);
+            File.WriteAllText("tasks.json", json);
         }
 
-        private List<Task> LoadTasksFromJson()
+        private void SaveCompletedTasks()
         {
-            if (File.Exists("tasks.json"))
+            string json = JsonConvert.SerializeObject(completedTasks, Formatting.Indented);
+            File.WriteAllText("completedTasks.json", json);
+        }
+
+        private List<Task> LoadCompletedTasks()
+        {
+            if (File.Exists("completedTasks.json"))
             {
-                string json = File.ReadAllText("tasks.json");
-                return JsonConvert.DeserializeObject<List<Task>>(json);
+                string json = File.ReadAllText("completedTasks.json");
+                if (!string.IsNullOrEmpty(json))
+                {
+                    return JsonConvert.DeserializeObject<List<Task>>(json) ?? new List<Task>();
+                }
             }
             return new List<Task>();
         }
 
-        private void UpdateTasksDisplay()
+        private void LoadTasksFromJson()
         {
-            boxImportantUg.Clear();
-            boxImportantNotUg.Clear();
-            boxNotImportUg.Clear();
-            boxNotImportNotUg.Clear();
-
-            foreach (Task task in tasks)
+            if (File.Exists("tasks.json"))
             {
-                if (task.Priority == "Важно-срочно")
+                string json = File.ReadAllText("tasks.json");
+                if (!string.IsNullOrEmpty(json))
                 {
-                    boxImportantUg.AppendText(task.Title + Environment.NewLine);
-                }
-                else if (task.Priority == "Важно-не-срочно")
-                {
-                    boxImportantNotUg.AppendText(task.Title + Environment.NewLine);
-                }
-                else if (task.Priority == "Не-важно-срочно")
-                {
-                    boxNotImportUg.AppendText(task.Title + Environment.NewLine);
-                }
-                else if (task.Priority == "Не-важно-не-срочно")
-                {
-                    boxNotImportNotUg.AppendText(task.Title + Environment.NewLine);
+                    tasks = JsonConvert.DeserializeObject<List<Task>>(json);
                 }
             }
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void TaskClick(object sender, EventArgs e)
         {
-            tasks = LoadTasksFromJson();
-            UpdateTasksDisplay();
+            ToolStripMenuItem toolStripMenuItem = sender as ToolStripMenuItem;
+
+            if (toolStripMenuItem != null)
+            {
+                ContextMenuStrip menu = (ContextMenuStrip)toolStripMenuItem.Owner;
+                Control sourceControl = menu.SourceControl;
+
+                if (sourceControl is ListBox listBox)
+                {
+                    if (listBox.SelectedItem is Task selectedTask)
+                    {
+                        selectedTask.IsCompleted = true;
+                        completedTasks.Add(selectedTask);
+                        tasks.Remove(selectedTask);
+                        SaveTasksToJson();
+                        SaveCompletedTasks();
+                        UpdateTasksDisplay();
+                        DialogResult result = MessageBox.Show("Задача выполнена!", "Выполнение", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    }
+                }
+            }
+        }
+
+        #region StripMenuTools
+        private void CopyToolStripMenu_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem menuItem = (ToolStripMenuItem)sender;
+            ContextMenuStrip menu = (ContextMenuStrip)menuItem.Owner;
+            Control sourceControl = menu.SourceControl;
+
+            if (sourceControl is ListBox listBox)
+            {
+                if (listBox.SelectedItem is Task selectedTask)
+                {
+                    Clipboard.SetText(selectedTask.Title);
+                }
+            }
+        }
+
+        private void PasteToolStripMenu_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem menuItem = (ToolStripMenuItem)sender;
+            ContextMenuStrip menu = (ContextMenuStrip)menuItem.Owner;
+            Control sourceControl = menu.SourceControl;
+            string priority = "";
+            DateTime date = selectedTask.Date;
+            if (sourceControl is ListBox listBox)
+            {
+                if (listBox.Name == lsBoxImportantUg.Name)
+                {
+                    priority = "Важно-срочно";
+                }
+                else if (listBox.Name == lsBoxImportantNotUg.Name)
+                {
+                    priority = "Важно-не-срочно";
+                }
+                else if (listBox.Name == lsBoxNotImportUg.Name)
+                {
+                    priority = "Не-важно-срочно";
+                }
+                else if (listBox.Name == lsBoxNotImportNotUg.Name)
+                {
+                    priority = "Не-важно-не-срочно";
+                }
+
+                string clipboardText = Clipboard.GetText();
+                if (!string.IsNullOrEmpty(clipboardText))
+                {
+                    Task newTask = new Task(clipboardText, priority, date);
+                    tasks.Add(newTask);
+                    SaveTasksToJson();
+                    UpdateTasksDisplay();
+                }
+            }
+        }
+
+        private void CropToolStripMenu_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem menuItem = (ToolStripMenuItem)sender;
+            ContextMenuStrip menu = (ContextMenuStrip)menuItem.GetCurrentParent();
+            Control sourceControl = menu.SourceControl;
+
+            if (sourceControl is ListBox listBox)
+            {
+                if (listBox.SelectedItem is Task selectedTask)
+                {
+                    tasks.Remove(selectedTask);
+                    Clipboard.SetText(selectedTask.Title);
+                    SaveTasksToJson();
+                    UpdateTasksDisplay();
+                }
+            }
+        }
+
+        private void DeleteToolStripMenu_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem toolStripMenuItem = (ToolStripMenuItem)sender;
+            if (toolStripMenuItem.GetCurrentParent() is ContextMenuStrip contextMenuStrip && contextMenuStrip.SourceControl is ListBox listBox && listBox.SelectedItem != null)
+            {
+                DialogResult result = MessageBox.Show("Вы действительно хотите удалить задачу?", "Подтверждение удаления", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (listBox.SelectedItem is Task selectedTask)
+                {
+                    tasks.Remove(selectedTask);
+                    SaveTasksToJson();
+                    UpdateTasksDisplay();
+                }
+            }
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lsBoxImportantUg.SelectedItem != null)
+            {
+                Task selectedTask = (Task)lsBoxImportantUg.SelectedItem;
+                OpenEditForm(selectedTask);
+            }
+            else if(lsBoxImportantNotUg.SelectedItem != null)
+            {
+                Task selectedTask = (Task)lsBoxImportantNotUg.SelectedItem;
+                OpenEditForm(selectedTask);
+            }
+            else if (lsBoxNotImportUg.SelectedItem != null)
+            {
+                Task selectedTask = (Task)lsBoxNotImportUg.SelectedItem;
+                OpenEditForm(selectedTask);
+            }
+            else if(lsBoxNotImportNotUg.SelectedItem != null)
+            {
+                Task selectedTask = (Task)lsBoxNotImportNotUg.SelectedItem;
+                OpenEditForm(selectedTask);
+            }
+        }
+
+        #endregion
+        private void OpenEditForm(Task task)
+        {
+            using (AddTaskForm editForm = new AddTaskForm(true, task.Title, task.Priority, task.Date))
+            {
+                if (editForm.ShowDialog() == DialogResult.OK)
+                {
+                    task.Title = editForm.TaskTitle;
+                    task.Priority = editForm.Priority;
+                    task.Date = editForm.TaskDate;
+                    SaveTasksToJson();
+                    UpdateTasksDisplay();
+                }
+            }
         }
     }
     public class Task
     {
         public string Title { get; set; }
         public string Priority { get; set; }
+        public bool IsCompleted { get; set; }
+        public DateTime Date { get; set; }
 
-        public Task(string title, string priority)
+        public Task(string title, string priority, DateTime date)
         {
             Title = title;
             Priority = priority;
+            Date = date;
+            IsCompleted = false;
+        }
+
+        public override string ToString()
+        {
+            return $"{Title} - {Date.ToShortDateString()}";
         }
     }
 }
