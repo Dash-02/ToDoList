@@ -52,18 +52,6 @@ namespace EisenhowerMatrix
             UpdateTasksDisplay();
         }
 
-        private void btn_date_Click(object sender, EventArgs e) // e,hfnm
-        {
-            DateTask dateTask = new DateTask();
-            if (dateTask.ShowDialog() == DialogResult.OK)
-            {
-                string selectedDate = dateTask.SelectedDate.ToShortDateString();
-                
-                UpdateTasksDisplay();
-                SaveTasksToJson();
-            }
-        }
-
         private void btn_done_Click(object sender, EventArgs e)
         {
             DoneTasks doneTasksForm = new DoneTasks(completedTasks);

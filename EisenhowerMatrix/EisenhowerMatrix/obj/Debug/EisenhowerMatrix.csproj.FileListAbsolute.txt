@@ -58,7 +58,6 @@ D:\JavaScript\For_git_push\lpp\list\todolist\EisenhowerMatrix\EisenhowerMatrix\b
 D:\JavaScript\For_git_push\lpp\list\todolist\EisenhowerMatrix\EisenhowerMatrix\bin\Debug\Newtonsoft.Json.xml
 D:\JavaScript\For_git_push\lpp\list\todolist\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.AddTaskForm.resources
 D:\JavaScript\For_git_push\lpp\list\todolist\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.csproj.CopyComplete
-D:\JavaScript\For_git_push\lpp\list\todolist\EisenhowerMatrix\EisenhowerMatrix\obj\Debug\EisenhowerMatrix.DateTask.resources
 C:\Users\amets\OneDrive\Рабочий стол\тут\EisenhowerMatrix\EisenhowerMatrix\bin\Debug\EisenhowerMatrix.exe.config
 C:\Users\amets\OneDrive\Рабочий стол\тут\EisenhowerMatrix\EisenhowerMatrix\bin\Debug\EisenhowerMatrix.exe
 C:\Users\amets\OneDrive\Рабочий стол\тут\EisenhowerMatrix\EisenhowerMatrix\bin\Debug\EisenhowerMatrix.pdb

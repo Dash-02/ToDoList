@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icons8-matrix-64-_1_.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -55,12 +58,6 @@
     <Compile Include="AddTaskForm.Designer.cs">
       <DependentUpon>AddTaskForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DateTask.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DateTask.Designer.cs">
-      <DependentUpon>DateTask.cs</DependentUpon>
-    </Compile>
     <Compile Include="DoneTasks.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,9 +74,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddTaskForm.resx">
       <DependentUpon>AddTaskForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DateTask.resx">
-      <DependentUpon>DateTask.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DoneTasks.resx">
       <DependentUpon>DoneTasks.cs</DependentUpon>
@@ -112,7 +106,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controls\" />
+    <Content Include="icons8-matrix-64-_1_.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
